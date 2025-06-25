@@ -1,0 +1,61 @@
+<appDefinition>
+   <id>my_project</id>
+   <version></version>
+   <name>my project</name>
+   <packageDefinitionList/>
+   <formDefinitionList/>
+   <userviewDefinitionList/>
+   <datalistDefinitionList/>
+   <builderDefinitionList/>
+   <pluginDefaultPropertiesList/>
+   <environmentVariableList>
+      <environmentVariable>
+         <id>appId</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>appcenter</value>
+      </environmentVariable>
+      <environmentVariable>
+         <id>counter</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>93</value>
+         <remarks>Used for plugin: Id Generator Field</remarks>
+      </environmentVariable>
+      <environmentVariable>
+         <id>path_app_formuploads</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>/var/lib/docker/volumes/dev_jogetdatadev-mesers/_data/app_formuploads</value>
+      </environmentVariable>
+      <environmentVariable>
+         <id>ticket</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>67</value>
+         <remarks>Used for plugin: Id Generator Field</remarks>
+      </environmentVariable>
+      <environmentVariable>
+         <id>url</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>http://84.247.180.67:8082/</value>
+      </environmentVariable>
+      <environmentVariable>
+         <id>url_api_doc</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>http://84.247.180.67:5006/generate</value>
+      </environmentVariable>
+      <environmentVariable>
+         <id>userViewId</id>
+         <appId>my_project</appId>
+         <appVersion>1</appVersion>
+         <value>appcenter</value>
+         <remarks>appcenter</remarks>
+      </environmentVariable>
+   </environmentVariableList>
+   <messageList/>
+   <resourceList/>
+   <license>oRIgWuw8ed5OmS98TSZFxocskOFXU0v3VPneM0k80NqSBK2r6RhNzTNTryZkuj4W</license>
+</appDefinition>
