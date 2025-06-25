@@ -1,0 +1,539 @@
+{
+    "elements": [
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.TextField",
+                        "properties": {
+                            "requiredSanitize": "",
+                            "maxlength": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "label": "Objet",
+                            "readonly": "",
+                            "size": "",
+                            "workflowVariable": "",
+                            "style": "",
+                            "id": "titre",
+                            "placeholder": "",
+                            "value": "",
+                            "readonlyLabel": "",
+                            "storeNumeric": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.TextArea",
+                        "properties": {
+                            "requiredSanitize": "",
+                            "readonly": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "workflowVariable": "",
+                            "label": "Mail",
+                            "id": "article",
+                            "placeholder": "",
+                            "rows": "20",
+                            "cols": "20",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.Radio",
+                        "properties": {
+                            "fullWidth": "",
+                            "controlField": "",
+                            "readonly": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "options": [
+                                {
+                                    "label": "Directeur(s)",
+                                    "value": "Directeurs",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Étudiant(s)",
+                                    "value": "Etudiants",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Tous les directeurs et étudiants",
+                                    "value": "Tous les directeurs et etudiants",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Autre",
+                                    "value": "Autre",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "workflowVariable": "",
+                            "label": "Destinataire ?",
+                            "id": "directeur_etudiants",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section2",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.TextField",
+                    "properties": {
+                        "requiredSanitize": "",
+                        "maxlength": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "email",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "label": "Autre e-mail",
+                        "readonly": "",
+                        "size": "",
+                        "workflowVariable": "",
+                        "style": "",
+                        "id": "autre",
+                        "placeholder": "",
+                        "value": "",
+                        "readonlyLabel": "",
+                        "storeNumeric": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "directeur_etudiants",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Autre",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section8",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.Radio",
+                    "properties": {
+                        "fullWidth": "",
+                        "controlField": "",
+                        "readonly": "",
+                        "optionsBinder": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "options": [
+                            {
+                                "label": "Oui",
+                                "value": "Oui",
+                                "grouping": ""
+                            },
+                            {
+                                "label": "Non",
+                                "value": "Non",
+                                "grouping": ""
+                            }
+                        ],
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "workflowVariable": "",
+                        "label": "Tous les directeurs ?",
+                        "id": "tous_les_directeurs",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "directeur_etudiants",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Directeurs",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section3",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.marketplace.AjaxSelectbox",
+                    "properties": {
+                        "minTermLength": "0",
+                        "idField": "username",
+                        "afterTypeDelay": "300",
+                        "defaultOptions": "100",
+                        "multiple": "true",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "requestParams": [],
+                        "label": "Directeur",
+                        "listId": "mailing_directeurs",
+                        "allowEmpty": "",
+                        "readonly": "",
+                        "keepTypingMsg": "Continue typing to search",
+                        "width": "70%",
+                        "lookingForMsg": "Retrieving results",
+                        "displayField": "full_name",
+                        "workflowVariable": "",
+                        "id": "directeur",
+                        "placeholder": "",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "tous_les_directeurs",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Non",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section5",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.Radio",
+                    "properties": {
+                        "fullWidth": "",
+                        "controlField": "",
+                        "readonly": "",
+                        "optionsBinder": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "options": [
+                            {
+                                "label": "Oui",
+                                "value": "Oui",
+                                "grouping": ""
+                            },
+                            {
+                                "label": "Non",
+                                "value": "Non",
+                                "grouping": ""
+                            }
+                        ],
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "workflowVariable": "",
+                        "label": "Tous les étudiants?",
+                        "id": "tous_les_etudiants",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "directeur_etudiants",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Etudiants",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section6",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.marketplace.AjaxSelectbox",
+                    "properties": {
+                        "minTermLength": "0",
+                        "idField": "id_etab",
+                        "afterTypeDelay": "300",
+                        "defaultOptions": "100",
+                        "multiple": "true",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "requestParams": [],
+                        "label": "Mail aux étudiants de l'établissement :",
+                        "listId": "mailing_directeurs",
+                        "allowEmpty": "",
+                        "readonly": "",
+                        "keepTypingMsg": "Continue typing to search",
+                        "width": "70%",
+                        "lookingForMsg": "Retrieving results",
+                        "displayField": "full_name",
+                        "workflowVariable": "",
+                        "id": "etudiant",
+                        "placeholder": "",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "tous_les_etudiants",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Non",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section4",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.FileUpload",
+                    "properties": {
+                        "resizeMethod": "",
+                        "permissionType": "public",
+                        "padding": "",
+                        "maxSizeMsg": "Limite de taille de fichier dépassée",
+                        "resizeWidth": "",
+                        "multiple": "",
+                        "validator": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "maxSize": "",
+                        "label": "Pièce jointe",
+                        "resizeQuality": "0.8",
+                        "removeFile": "",
+                        "readonly": "",
+                        "attachment": "",
+                        "size": "",
+                        "fileTypeMsg": "type de fichier invalide",
+                        "id": "fichier",
+                        "resizeHeight": "",
+                        "fileType": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section7",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        }
+    ],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "noPermissionMessage": "",
+        "loadBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "name": "Mailing",
+        "description": "",
+        "postProcessorRunOn": "both",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "id": "mailing",
+        "postProcessor": {
+            "className": "org.joget.apps.app.lib.BeanShellTool",
+            "properties": {"script": "import org.joget.apps.app.service.AppPluginUtil;\r\nimport org.joget.plugin.base.ApplicationPlugin;\r\nimport org.joget.plugin.property.model.PropertyEditable;\r\nimport org.joget.apps.app.model.AppDefinition;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport java.sql.*;\r\nimport java.util.Map;\r\nimport javax.sql.DataSource;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport javax.mail.Transport;\r\nimport org.joget.apps.app.model.AppDefinition;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.plugin.base.Plugin;\r\nimport org.joget.commons.util.LogUtil;\r\nimport java.net.URLDecoder;\r\n\r\n\r\nString formid = \"#form.mails.id#\";\r\nString autre = \"#form.mails.autre#\";\r\nString filename = \"#form.mails.fichier#\";\r\nString filename_decoded = URLDecoder.decode(filename, \"UTF-8\");\r\nString file_link = \"#appVariable.url#jw/web/client/app/appcenter/_/form/download/mailing/\"+formid+\"/\"+filename_decoded+\".?attachment=true\";\r\nString message = \"<p style='text-align: center;'>\" +\r\n    \"Vous trouverez la pièce jointe :\" +\r\n    \"<a href='\" + file_link + \"' style='color: #28a745;' target='_blank'>\" +\r\n    \"Accéder au fichier<\/a><\/p>\";\r\n\r\n\r\n\r\n\r\n    public Object sendMail(AppDefinition appDef, HttpServletRequest request, String email, String subject, String emailContent) {\r\n        try {\r\n            // Replace line breaks in the subject\r\n            subject = subject.replace(\"\\n\", \" \").replace(\"\\r\", \"\");\r\n\r\n            Plugin plugin = pluginManager.getPlugin(\"org.joget.apps.app.lib.EmailTool\");\r\n\r\n            Map propertiesMap = AppPluginUtil.getDefaultProperties(plugin, null, appDef, null);\r\n            propertiesMap.put(\"pluginManager\", pluginManager);\r\n            propertiesMap.put(\"appDef\", appDef);\r\n            propertiesMap.put(\"request\", request);\r\n\r\n            ApplicationPlugin emailTool = (ApplicationPlugin) plugin;\r\n\r\n            propertiesMap.put(\"toSpecific\", email);\r\n            propertiesMap.put(\"subject\", subject);\r\n            propertiesMap.put(\"message\", emailContent);\r\n\r\n            ((PropertyEditable) emailTool).setProperties(propertiesMap);\r\n            emailTool.execute(propertiesMap);\r\n\r\n        } catch (Exception e) {\r\n            LogUtil.error(\"SendMailTask\", e, \"Failed to send email.\");\r\n        }\r\n        return null;\r\n    }\r\n\r\n\r\n        String directeur_etudiants = \"#form.mails.directeur_etudiants#\";\r\n        String tous_les_directeurs = \"#form.mails.tous_les_directeurs#\";\r\n        String tous_les_etudiants = \"#form.mails.tous_les_etudiants#\";\r\n        String etudiant = \"#form.mails.etudiant#\";\r\n        String directeur = \"#form.mails.directeur#\";\r\n        \r\n        String id = \"#form.mails.id#\";\r\n        String subject = \"\";\r\n        String emailContent = \"\";\r\n        String emails = \"\";\r\n\r\n\r\n        if ((\"Directeurs\".equals(directeur_etudiants) && \"Oui\".equals(tous_les_directeurs)) || \"Tous les directeurs et etudiants\".equals(directeur_etudiants)) {\r\n            try  {\r\n                Connection con = ((DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\")).getConnection();\r\n                if (!con.isClosed()) {\r\n                    // Fetch subject and email content\r\n                    String sqlActualites = \"SELECT c_titre, c_article FROM jwdb.app_fd_mails WHERE id = ?\";\r\n                  \r\n                        PreparedStatement stmt = con.prepareStatement(sqlActualites);\r\n                        stmt.setString(1, id);\r\n                        ResultSet rs = stmt.executeQuery();\r\n                            if (rs.next()) {\r\n                                subject = rs.getString(1);\r\n                                emailContent = rs.getString(2);\r\n                            }\r\n                        if (filename != null){\r\n                                emailContent=emailContent+message;\r\n                                                                        }\r\n                        \r\n                    \r\n\r\n                    // Fetch recipient emails\r\n                    String sqlEmails = \"SELECT c_adresse_electronique_directeur FROM app_fd_directeurs WHERE c_active = 1\";\r\n                    PreparedStatement stmt = con.prepareStatement(sqlEmails);\r\n                         ResultSet rs = stmt.executeQuery(); \r\n                        while (rs.next()) {\r\n                            emails = rs.getString(1);\r\n                            sendMail(appDef, request, emails, subject, emailContent);\r\n                        }\r\n                    \r\n                }\r\n            } catch (Exception e) {\r\n                LogUtil.error(\"SendMailTask\", e, \"Error executing mail task.\");\r\n            }\r\n        }\r\n    \r\n    \r\n            if ((\"Etudiants\".equals(directeur_etudiants) && \"Oui\".equals(tous_les_etudiants) ) ||  \"Tous les directeurs et etudiants\".equals(directeur_etudiants)) {\r\n            try  {\r\n                Connection con = ((DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\")).getConnection();\r\n                if (!con.isClosed()) {\r\n                    // Fetch subject and email content\r\n                    String sqlActualites = \"SELECT c_titre, c_article FROM jwdb.app_fd_mails WHERE id = ?\";\r\n                  \r\n                        PreparedStatement stmt = con.prepareStatement(sqlActualites);\r\n                        stmt.setString(1, id);\r\n                        ResultSet rs = stmt.executeQuery();\r\n                            if (rs.next()) {\r\n                                subject = rs.getString(1);\r\n                                emailContent = rs.getString(2);\r\n                            }\r\n                        if (filename != null){\r\n                                emailContent=emailContent+message;\r\n                                                                        }\r\n\r\n                    // Fetch recipient emails\r\n                    String sqlEmails = \"SELECT id FROM app_fd_inscription_etud WHERE c_active = 1\";\r\n                    PreparedStatement stmt = con.prepareStatement(sqlEmails);\r\n                         ResultSet rs = stmt.executeQuery(); \r\n                        while (rs.next()) {\r\n                            emails = rs.getString(1);\r\n                            sendMail(appDef, request, emails, subject, emailContent);\r\n                        }\r\n                    \r\n                }\r\n            } catch (Exception e) {\r\n                LogUtil.error(\"SendMailTask\", e, \"Error executing mail task.\");\r\n            }\r\n        }\r\n\r\n\r\n\r\n\r\nif (\"Etudiants\".equals(directeur_etudiants) && \"Non\".equals(tous_les_etudiants)) {\r\n    try {\r\n\r\n        Connection con = ((DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\")).getConnection();\r\n        if (!con.isClosed()) {\r\n\r\n            String sqlActualites = \"SELECT c_titre, c_article FROM jwdb.app_fd_mails WHERE id = ?\";\r\n            PreparedStatement stmt = con.prepareStatement(sqlActualites);\r\n            stmt.setString(1, id);\r\n            ResultSet rs = stmt.executeQuery();\r\n            \r\n            if (rs.next()) {\r\n                subject = rs.getString(1);\r\n                emailContent = rs.getString(2);\r\n                if (filename != null){\r\n                                emailContent=emailContent+message;\r\n                                                                        }                \r\n            } else {\r\n                LogUtil.warn(\"SendMailTask\", \"No email content found for ID: \", id);\r\n                return;\r\n            }\r\n\r\n            // Split the emails string\r\n            String emails = etudiant; // Assuming 'etudiant' contains student identifiers separated by ;\r\n            String[] emailArray = emails.split(\";\");\r\n\r\nfor (String email : emailArray) {\r\n    email = email.trim(); // Trim whitespace to avoid issues\r\n    if (!email.isEmpty()) {\r\n\r\n        // Fetch all student emails associated with this identifier\r\n        String sqlEmail = \"SELECT c_email_etudiant FROM jwdb.app_fd_inscription_ecole WHERE c_id_etablissement = ?\";\r\n        PreparedStatement emailStmt = con.prepareStatement(sqlEmail);\r\n        emailStmt.setString(1, email);\r\n        ResultSet emailRs = emailStmt.executeQuery();\r\n\r\n        // Iterate through all rows in the result set\r\n        while (emailRs.next()) {\r\n            String mail_etud = emailRs.getString(1);\r\n\r\n            // Send the email\r\n            sendMail(appDef, request, mail_etud, subject, emailContent);\r\n        }\r\n\r\n        emailRs.close(); // Close ResultSet\r\n        emailStmt.close(); // Close Statement\r\n    } else {\r\n        LogUtil.warn(\"SendMailTask\", \"Empty student identifier encountered. Skipping...\");\r\n    }\r\n}\r\n        } else {\r\n            LogUtil.error(\"SendMailTask\", \"Database connection could not be established.\");\r\n        }\r\n    } catch (Exception e) {\r\n        LogUtil.error(\"SendMailTask\", e, \"Error executing mail task.\");\r\n    }\r\n}\r\n\r\n\r\n            if (\"Directeurs\".equals(directeur_etudiants) && \"Non\".equals(tous_les_directeurs)) {\r\n            try  {\r\n                Connection con = ((DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\")).getConnection();\r\n                if (!con.isClosed()) {\r\n                    // Fetch subject and email content\r\n                    String sqlActualites = \"SELECT c_titre, c_article FROM jwdb.app_fd_mails WHERE id = ?\";\r\n                  \r\n                        PreparedStatement stmt = con.prepareStatement(sqlActualites);\r\n                        stmt.setString(1, id);\r\n                        ResultSet rs = stmt.executeQuery();\r\n                            if (rs.next()) {\r\n                                subject = rs.getString(1);\r\n                                emailContent = rs.getString(2);\r\n                            }\r\n                        \r\n                    \r\n\r\nString emails = directeur; \r\n\r\nString[] emailArray = emails.split(\";\");\r\n\r\nfor (String email : emailArray) {\r\n    email = email.trim(); \r\n    if (!email.isEmpty()) {\r\n        sendMail(appDef, request, email, subject, emailContent);\r\n    }\r\n}\r\n\r\n                        \r\n                    \r\n                }\r\n            } catch (Exception e) {\r\n                LogUtil.error(\"SendMailTask\", e, \"Error executing mail task.\");\r\n            }\r\n        }\r\n\r\n\r\n\r\n        if (\"Autre\".equals(directeur_etudiants)) {\r\n            try  {\r\n                Connection con = ((DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\")).getConnection();\r\n                if (!con.isClosed()) {\r\n                    // Fetch subject and email content\r\n                    String sqlActualites = \"SELECT c_titre, c_article FROM jwdb.app_fd_mails WHERE id = ?\";\r\n                  \r\n                        PreparedStatement stmt = con.prepareStatement(sqlActualites);\r\n                        stmt.setString(1, id);\r\n                        ResultSet rs = stmt.executeQuery();\r\n                            if (rs.next()) {\r\n                                subject = rs.getString(1);\r\n                                emailContent = rs.getString(2);\r\n                            }\r\n                        if (filename != null){\r\n                                emailContent=emailContent+message;\r\n                                                                        }\r\n                        \r\n                                sendMail(appDef, request, autre, subject, emailContent);\r\n                        \r\n                    \r\n                }\r\n            } catch (Exception e) {\r\n                LogUtil.error(\"SendMailTask\", e, \"Error executing mail task.\");\r\n            }\r\n        }\r\n"}
+        },
+        "storeBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "tableName": "mails"
+    }
+}

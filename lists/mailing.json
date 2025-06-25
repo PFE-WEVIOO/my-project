@@ -1,0 +1,84 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "id",
+            "hrefParam": "id",
+            "rules": [],
+            "label": "<i class=\"far fa-eye\"><\/i> ",
+            "href": "mailing_vis?embed=true",
+            "confirmation": "",
+            "datalist_type": "row_action",
+            "target": "popup",
+            "header_label": ""
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "titre",
+            "id": "column_0",
+            "label": "Objet",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "dateCreated",
+            "id": "column_1",
+            "label": "Date de création",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "createdByName",
+            "id": "column_2",
+            "label": "Créé par nom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "directeur_etudiants",
+            "id": "column_3",
+            "label": "Directeurs ou etudiants ?",
+            "sortable": "false"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Mailing",
+    "id": "mailing",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "mailing",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "mailing?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

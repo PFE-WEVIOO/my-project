@@ -1,0 +1,113 @@
+{
+    "template": {
+        "className": "org.joget.apps.datalist.lib.SimpleCardTemplate",
+        "properties": {
+            "image": "",
+            "inlineLabel": "",
+            "footerMsg": "",
+            "cardAction": "",
+            "columns_desktop": "col-lg-3",
+            "columns_mobile": "col-12",
+            "columns_tablet": "col-md-6"
+        }
+    },
+    "considerFilterWhenGetTotal": "",
+    "useSession": "",
+    "responsiveMode": "",
+    "rowActions": [],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Session",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_session",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.tutorial.FileLinkDatalistFormatter",
+                "properties": {
+                    "attachment": "true",
+                    "formDefId": "calendrier"
+                }
+            },
+            "label": "Calendrier",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_calendrier",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [],
+    "showDataWhenFilterSet": "",
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "hidePageSize": "",
+    "column_title": [{
+        "filterable": true,
+        "hidden": "false",
+        "renderHtml": "",
+        "format": {
+            "className": "",
+            "properties": {}
+        },
+        "label": "Titre",
+        "sortable": "false",
+        "datalist_type": "column",
+        "exclude_export": "",
+        "name": "c_titre_dannonce",
+        "width": "",
+        "headerAlignment": "",
+        "action": {
+            "className": "",
+            "properties": {}
+        },
+        "style": "",
+        "id": "column_0",
+        "alignment": ""
+    }],
+    "name": "Calendrier des examens",
+    "id": "calendrier",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "\nSELECT a.*\nFROM app_fd_calendrier a\nJOIN app_fd_inscription_etud b \nON a.c_etablissement = (\n    SELECT id \n    FROM app_fd_etablissement \n    WHERE c_etablissement = b.c_etablissement\n) where b.id = '#currentUser.email#'\n",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

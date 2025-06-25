@@ -1,0 +1,111 @@
+{
+    "elements": [{
+        "elements": [{
+            "elements": [
+                {
+                    "className": "org.joget.apps.form.lib.PasswordField",
+                    "properties": {
+                        "strengthChecker": "",
+                        "size": "",
+                        "readonly": "",
+                        "maxlength": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.BeanShellValidator",
+                            "properties": {
+                                "decoration": "",
+                                "script": "import java.util.regex.Pattern;\nimport java.util.regex.Matcher;\n\n\nimport java.util.Arrays;\n\n\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.Form;\nimport org.joget.apps.form.model.FormData;\nimport org.joget.apps.form.service.FormUtil;\n\nimport org.joget.commons.util.LogUtil;\n \npublic boolean validate(Element element, FormData formData ,String[] values) {\n    \n    \n        //get old password value from form data object\nString id = FormUtil.getElementParameterName(element);\n     String pattern =\"^(?=(.*\\\\d.*){6})(?=.*[a-zA-Z])(?=.*[^\\\\da-zA-Z]).{8,}$\";\n    LogUtil.info(\"<--------- pattern ---------------->\",pattern);\n    \n    boolean isMatch = Pattern.matches(pattern, values[0]);\n  if (isMatch!=true){\n      \n\n      formData.addFormError(id, \"Votre mot de passe est considéré comme faible. Pour des raisons de sécurité, veuillez choisir un mot de passe qui contient au moins 6 chiffres, au moins un caractère spécial, et au moins une lettre.\");\n      return false;\n\n  }\n      \n  \n    LogUtil.info(\"<+++++ value form +++++++++++>\",values[0]);\n    \n        LogUtil.info(\"<------ isMatch -------->\",String.valueOf(isMatch));\n \n    return isMatch;\n}\n \n//call validate method with injected variable\nreturn validate(element,formData,values);"
+                            }
+                        },
+                        "id": "nouveau_mdp",
+                        "label": "Nouveau mot de passe",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.form.lib.PasswordField",
+                    "properties": {
+                        "strengthChecker": "",
+                        "size": "",
+                        "readonly": "",
+                        "maxlength": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.BeanShellValidator",
+                            "properties": {
+                                "decoration": "",
+                                "script": "import java.util.Arrays;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.apps.form.model.Element;\r\nimport org.joget.apps.form.model.Form;\r\nimport org.joget.apps.form.model.FormData;\r\nimport org.joget.apps.form.service.FormUtil;\r\n \r\npublic boolean validate(Element element, FormData formData, String[] values) {\r\n    boolean result = true;\r\n \r\n    //get field 1 value from form data object\r\n    String field1Id = \"nouveau_mdp\";\r\n    Form form = FormUtil.findRootForm(element);\r\n    Element field1 = FormUtil.findElement(field1Id, form, formData);\r\n \r\n    if (field1 != null) {\r\n        //get value of field 1\r\n        String[] compareValues = FormUtil.getElementPropertyValues(field1, formData);\r\n \r\n        //compare the value of field 2 and field 1 are equals\r\n        if (!Arrays.equals(values, compareValues)) {\r\n            String id = FormUtil.getElementParameterName(element);\r\n            formData.addFormError(id, \"Vérifier si les mots de passes sont identiques\");\r\n            result = false;\r\n        }\r\n    } else {\r\n        //ignore if the field 1 not exist\r\n    }\r\n \r\n    return result;\r\n}\r\n \r\n//call validate method with injected variable\r\nreturn validate(element, formData, values);"
+                            }
+                        },
+                        "id": "confirm",
+                        "label": "Confirmer mot de passe",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.form.lib.CustomHTML",
+                    "properties": {
+                        "requiredSanitize": "",
+                        "autoPopulate": "",
+                        "label": "",
+                        "id": "field9",
+                        "value": "<script>\nfunction chanegeInputType1(id, showClass, hideClass) {\n    const passwordField = document.getElementById(id);\n    const passwordShow = document.querySelector(`.${showClass}`);\n    const textShow = document.querySelector(`.${hideClass}`);\n\n    if (passwordField.type === 'password') {\n        passwordField.type = 'text';\n        passwordShow.style.display = 'none';\n        textShow.style.display = 'inline';\n    } else {\n        passwordField.type = 'password';\n        passwordShow.style.display = 'inline';\n        textShow.style.display = 'none';\n    }\n}\n\n$(document).ready(function() {\n    // For \"New Password\" field\n    const passwordContainer1 = $('<div>').addClass('PasswordContainer').attr('id', 'nouvmdp');\n    const inputElement1 = $('#nouveau_mdp');\n    inputElement1.wrap(passwordContainer1);\n\n    inputElement1.after(`\n        <span onclick=\"chanegeInputType1('nouveau_mdp', 'password-show1', 'text-show1')\" class=\"password-show1\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"eye-icon\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"><\/path><circle cx=\"12\" cy=\"12\" r=\"3\"><\/circle><\/svg>\n        <\/span>\n        <span onclick=\"chanegeInputType1('nouveau_mdp', 'password-show1', 'text-show1')\" class=\"text-show1\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"eye-icon\"><path d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"><\/path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"><\/line><\/svg>\n        <\/span>\n    `);\n\n    // For \"Confirm Password\" field\n    const passwordContainer2 = $('<div>').addClass('PasswordContainer').attr('id', 'confmdp');\n    const inputElement2 = $('#confirm');\n    inputElement2.wrap(passwordContainer2);\n\n    inputElement2.after(`\n        <span onclick=\"chanegeInputType1('confirm', 'password-show2', 'text-show2')\" class=\"password-show2\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"eye-icon\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"><\/path><circle cx=\"12\" cy=\"12\" r=\"3\"><\/circle><\/svg>\n        <\/span>\n        <span onclick=\"chanegeInputType1('confirm', 'password-show2', 'text-show2')\" class=\"text-show2\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"eye-icon\"><path d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"><\/path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"><\/line><\/svg>\n        <\/span>\n    `);\n\n    // Hide the text-show spans initially for both fields\n    $('.text-show1').hide();\n    $('.text-show2').hide();\n});\n<\/script>\n<style>\n.PasswordContainer {\n    height: auto;\n    position: relative;\n    display: inline-block;\n    width: 100%;\n}\n\n.PasswordContainer input {\n    padding-right: 40px;\n    font-size: 16px;\n    width: 100%;\n    padding: 0.75rem 2.5rem 0.75rem 1rem;\n    border: 1px solid #e5e7eb;\n    border-radius: 0.5rem;\n    transition: all 0.2s ease;\n}\n\n.PasswordContainer input:focus {\n    outline: none;\n    border-color: #4f46e5;\n    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);\n}\n\n.password-show1,\n.text-show1,\n.password-show2,\n.text-show2 {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    right: 12px;\n    cursor: pointer;\n    color: #6b7280;\n    transition: color 0.2s ease;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 4px;\n    border-radius: 4px;\n}\n\n.password-show1:hover,\n.text-show1:hover,\n.password-show2:hover,\n.text-show2:hover {\n    color: #4f46e5;\n    background-color: rgba(79, 70, 229, 0.1);\n}\n\n.eye-icon {\n    width: 20px;\n    height: 20px;\n    stroke-width: 1.5;\n}\n\n/* Hide browser's default eye icon in Edge and IE */\ninput::-ms-reveal,\ninput::-ms-clear {\n    display: none;\n}\n<\/style>\n\n"
+                    }
+                }
+            ],
+            "className": "org.joget.apps.form.model.Column",
+            "properties": {"width": "100%"}
+        }],
+        "className": "org.joget.apps.form.model.Section",
+        "properties": {
+            "visibilityControl": "",
+            "permissionReadonly": "",
+            "permission": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "",
+            "reverse": "",
+            "storeBinder": {
+                "className": "",
+                "properties": {}
+            },
+            "visibilityValue": "",
+            "regex": "",
+            "readonly": "",
+            "loadBinder": {
+                "className": "",
+                "properties": {}
+            },
+            "comment": "",
+            "id": "section3",
+            "join": "",
+            "readonlyLabel": ""
+        }
+    }],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "noPermissionMessage": "",
+        "loadBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "name": "Change pass ministre",
+        "description": "",
+        "postProcessorRunOn": "both",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "id": "changepass_ministre",
+        "postProcessor": {
+            "className": "org.joget.apps.app.lib.BeanShellTool",
+            "properties": {"script": "import org.joget.apps.app.service.AppUtil;\r\nimport org.joget.apps.form.model.*;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.joget.commons.util.StringUtil;\r\nimport org.joget.commons.util.UuidGenerator;\r\nimport org.joget.directory.dao.EmploymentDao;\r\nimport org.joget.directory.dao.UserDao;\r\nimport org.joget.directory.model.*;\r\nimport org.joget.directory.model.service.DirectoryManager;\r\n\r\n        // Generate a new UUID\r\n        String pId = UuidGenerator.getInstance().getUuid();\r\n\r\n        // Get UserDao and DirectoryManager beans\r\n        UserDao userDao = (UserDao) AppUtil.getApplicationContext().getBean(\"userDao\");\r\n        DirectoryManager dm = (DirectoryManager) AppUtil.getApplicationContext().getBean(\"directoryManager\");\r\n\r\n        // Retrieve the current user\r\n        User user = dm.getUserByUsername(\"#currentUser.username#\");\r\n\r\n        // Log and update the user password\r\n        String password = \"#form.edit_profil.nouveau_mdp#\";\r\n        LogUtil.info(\"Password entered ---> \", password);\r\n        String encodedPassword = StringUtil.md5Base16(password);\r\n        LogUtil.info(\"Encoded password ---> \", encodedPassword);\r\n        user.setPassword(encodedPassword);\r\n        userDao.updateUser(user);\r\n\r\n        // Assign the user to an employment role\r\n        EmploymentDao employmentDao = (EmploymentDao) AppUtil.getApplicationContext().getBean(\"employmentDao\");\r\n        Employment emp = new Employment();\r\n        emp.setId(pId);\r\n        emp.setUserId(user.getId());\r\n\r\n        if (userDao.unassignUserFromGroup(user.getId(), \"first_login_ministre\")) {\r\n            LogUtil.info(\"Employment added ---> \", String.valueOf(employmentDao.addEmployment(emp)));\r\n        \r\n\r\n        }\r\n\r\n\r\n"}
+        },
+        "storeBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "tableName": "edit_profil"
+    }
+}

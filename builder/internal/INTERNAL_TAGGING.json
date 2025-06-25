@@ -1,0 +1,28 @@
+{
+    "datas": {
+        "form": {},
+        "list": {},
+        "userview": {
+            "v": ["t07"],
+            "v3": ["t08"]
+        }
+    },
+    "labels": {
+        "t10": {"color": "black"},
+        "t01": {"color": "red"},
+        "t03": {"color": "orange"},
+        "t02": {"color": "pink"},
+        "t05": {"color": "green"},
+        "t04": {"color": "yellow"},
+        "t07": {
+            "color": "blue",
+            "label": "Default"
+        },
+        "t06": {"color": "lime"},
+        "t09": {"color": "purple"},
+        "t08": {
+            "color": "sky",
+            "label": "Glass"
+        }
+    }
+}

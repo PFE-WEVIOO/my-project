@@ -1,0 +1,971 @@
+{
+    "elements": [
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "nom",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "prenom",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "resultat",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "date_action",
+                            "value": "#date.dd/MM/yyyy#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "formation",
+                            "value": "#form.inscription_ecole.formation#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "id_etudiant",
+                            "value": "#form.inscription_ecole.id_etudiant#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "email_etudiant",
+                            "value": "#form.inscription_ecole.email_etudiant#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "id_etablissement",
+                            "value": "#form.inscription_ecole.id_etablissement#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "id",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "autre_diplome",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "nationalite_etudi",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "steps",
+                            "value": "1"
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "org.joget.apps.form.lib.BeanShellFormBinder",
+                    "properties": {
+                        "autoHandleWorkflowVariable": "true",
+                        "cacheInterval": "",
+                        "script": "import org.json.JSONArray;\r\nimport org.json.JSONObject;\r\nimport org.joget.apps.form.model.*;\r\nimport org.joget.apps.form.service.*;\r\nimport org.joget.apps.app.service.*;\r\nimport java.sql.*;\r\nimport java.util.*;\r\nimport java.text.*;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport java.sql.Date;  \r\nimport org.joget.commons.util.LogUtil;\r\nimport org.apache.http.entity.ContentType;\r\nimport org.apache.http.entity.StringEntity;\r\nimport org.apache.http.impl.client.CloseableHttpClient;\r\nimport org.apache.http.impl.client.HttpClients;\r\nimport com.fasterxml.jackson.databind.ObjectMapper;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\nimport java.sql.Date;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Collection;\r\nimport java.util.Map;\r\nimport java.util.Properties;\r\nimport java.util.Random;\r\nimport java.util.Set;\r\nimport java.util.concurrent.TimeUnit;\r\nimport java.text.ParseException;\r\nimport java.text.SimpleDateFormat;\r\nimport javax.sql.DataSource;\r\nimport javax.swing.JFrame;\r\nimport javax.swing.JButton;\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport org.joget.apps.app.model.*;\r\nimport org.joget.apps.app.service.*;\r\nimport org.joget.apps.form.model.*;\r\nimport org.joget.apps.form.service.*;\r\nimport org.joget.commons.util.*;\r\nimport org.joget.directory.dao.UserDao;\r\nimport org.joget.directory.dao.RoleDao;\r\nimport org.joget.directory.model.*;\r\nimport org.joget.directory.model.service.DirectoryUtil;\r\nimport org.joget.directory.model.service.ExtDirectoryManager;\r\nimport org.joget.directory.model.service.UserSecurity;\r\nimport org.joget.workflow.model.WorkflowAssignment;\r\nimport org.joget.workflow.shark.model.dao.WorkflowAssignmentDao;\r\nimport org.joget.workflow.util.WorkflowUtil;\r\nimport org.joget.plugin.base.ApplicationPlugin;\r\nimport org.joget.plugin.base.Plugin;\r\nimport org.joget.plugin.base.PluginManager;\r\nimport org.joget.plugin.property.model.PropertyEditable;\r\nimport org.joget.commons.util.PluginThread;\r\nimport java.io.IOException;\r\nimport org.joget.commons.util.UuidGenerator;\r\nimport org.joget.commons.util.SecurityUtil;\r\nimport org.joget.apps.form.model.Element;\r\nimport org.joget.apps.form.model.Form;\r\nimport org.apache.http.HttpEntity;\r\nimport org.apache.http.client.methods.HttpGet;\r\nimport java.io.InputStream;\r\nimport java.io.OutputStream;\r\nimport java.io.FileOutputStream;\r\nimport org.apache.http.util.EntityUtils;\r\nimport com.fasterxml.jackson.databind.JsonNode;\r\n\r\nimport org.joget.apps.app.model.AppDefinition;\r\nimport org.joget.apps.app.service.AppService;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.apps.form.model.FormRow;\r\nimport org.joget.apps.form.model.FormRowSet;\r\nimport org.joget.workflow.model.WorkflowAssignment;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.joget.workflow.model.service.*;\r\n\r\nConnection con = null;\r\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\n\r\nString id = \"#form.inscription_ecole.email_etudiant#\";\r\nString nat = \"\";\r\nString c_autre_diplome = \"\";\r\n    int count = 0;\r\n\r\ntry {\r\n    DataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\n    con = ds.getConnection();\r\n\r\n    if (!con.isClosed()) {\r\n\r\n        PreparedStatement stmt1 = con.prepareStatement(\"SELECT c_nationalite,c_autre_diplome FROM jwdb.app_fd_inscription_etud WHERE id LIKE ? ;\");\r\n        stmt1.setString(1, id);\r\n        ResultSet rs = stmt1.executeQuery();\r\n\r\n        while (rs.next()) {\r\n            nat = rs.getString(\"c_nationalite\");\r\n            c_autre_diplome = rs.getString(\"c_autre_diplome\");\r\n\r\n        }\r\n        PreparedStatement stmt2 = con.prepareStatement(\"SELECT count(*) FROM jwdb.app_fd_diplomes WHERE c_id_master LIKE ? ;\");\r\n        stmt2.setString(1, id);\r\n        ResultSet rs1 = stmt2.executeQuery();\r\n\r\n        while (rs1.next()) {\r\n            count = rs1.getInt(1);\r\n\r\n        }\r\n\r\n    }\r\n} catch (Exception e) {\r\n    LogUtil.error(\"Sample app - Form 1\", e, \"Error loading user data in load binder\");\r\n} finally {\r\n    try {\r\n        if (con != null) {\r\n            con.close();\r\n        }\r\n    } catch (Exception ex) {\r\n        LogUtil.error(\"Script P¨V commission\", ex, \"Script P¨V commission\");\r\n    }\r\n}\r\n\r\nFormRowSet f = new FormRowSet();\r\nf.setMultiRow(true);\r\nFormRow r1 = new FormRow();\r\n\r\n// Check for null values and set default values if needed\r\nr1.put(\"nationalite_etudi\",nat);\r\nr1.put(\"autre_diplome\", count > 0 ? \"true\" : \"false\");\r\n\r\n\r\nf.add(r1);\r\n\r\nreturn f;\r\n\r\n",
+                        "autoHandleFiles": ""
+                    }
+                },
+                "comment": "",
+                "id": "section7",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "verif_kill",
+                            "id": "verif_kill",
+                            "value": "true"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "verification_process",
+                            "value": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "historique",
+                            "value": "#form.inscription_ecole.historique#"
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "org.joget.apps.form.lib.BeanShellFormBinder",
+                    "properties": {
+                        "autoHandleWorkflowVariable": "true",
+                        "cacheInterval": "",
+                        "script": "import java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.joget.apps.form.model.FormRow;\r\nimport org.joget.apps.form.model.FormRowSet;\r\nimport org.joget.workflow.model.service.WorkflowManager;\r\n\r\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\r\n\r\nint size = 0;\r\nsize = workflowManager.getAssignmentSize(true, \"appcenter:latest:inscription_formation\");\r\n\r\nint other_status_count = 0;\r\nint count_meme_etab = 0;\r\nint valide_count = 0;\r\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\nConnection con = null;\r\nPreparedStatement stmtInsert = null;\r\nResultSet rs = null;\r\n\r\nFormRowSet f = new FormRowSet();\r\nf.setMultiRow(true);\r\nFormRow r1 = new FormRow();\r\n\r\nString createdBy = \"#currentUser.username#\";\r\nString etab = \"#form.inscription_ecole.etablissement#\";\r\nString formation = \"#form.inscription_ecole.formation#\";\r\nString delais = \"#form.delais.nombre_demandes_insc[delais_id]#\"; // Ensure this syntax works in your framework\r\nint delais_int = Integer.valueOf(delais); // Capitalize \"Integer\"\r\n\r\ntry {\r\n    con = ds.getConnection();\r\n\r\n    if (!con.isClosed()) {\r\n        String selectSql = \"SELECT SUM(CASE WHEN c_statut = 'Validé' THEN 1 ELSE 0 END) AS valide_count, \"\r\n                 + \"SUM(CASE WHEN c_statut IN ('En cours de traitement', 'Accepté', 'Liste dattente') \"\r\n                 + \"THEN 1 ELSE 0 END) AS other_status_count, \"\r\n                 + \"SUM(CASE WHEN c_statut IN ('En cours de traitement', 'Accepté', 'Liste dattente','Refusé') AND c_etablissement = ? AND c_formation = ?\"\r\n                 + \"THEN 1 ELSE 0 END) AS count_meme_etab \"\r\n                 + \"FROM jwdb.app_fd_inscription_ecole WHERE createdBy = ?;\";\r\n\r\n        stmtInsert = con.prepareStatement(selectSql);\r\n        stmtInsert.setString(1, etab);  // Safe parameter substitution\r\n        stmtInsert.setString(2, formation);  // Safe parameter substitution\r\n        stmtInsert.setString(3, createdBy);  // Safe parameter substitution\r\n        \r\n        rs = stmtInsert.executeQuery();\r\n\r\n        if (rs.next()) {\r\n            valide_count = rs.getInt(\"valide_count\");\r\n            other_status_count = rs.getInt(\"other_status_count\");\r\n            count_meme_etab = rs.getInt(\"count_meme_etab\");\r\n        }\r\n    }\r\n} catch (SQLException e) {\r\n    LogUtil.info(\"error get DAO\", e.getMessage());\r\n} finally {\r\n    try {\r\n        if (rs != null) rs.close();\r\n        if (stmtInsert != null) stmtInsert.close();\r\n        if (con != null) con.close();\r\n    } catch (SQLException ex) {\r\n        LogUtil.error(\"Error closing resources\", ex);\r\n    }\r\n}\r\n\r\n\r\nString habilitation = \"#form.habilitation.habilitaion_check[{form.inscription_ecole.formation};{form.inscription_ecole.id_etablissement}]#\";\r\nString currentDate = \"#date.yyyy#\";\r\nString habilitation_date = \"#form.habilitation.annee_fin[{form.inscription_ecole.formation};{form.inscription_ecole.id_etablissement}]#\";\r\nString niv = \"#form.inscription_ecole.niveau#\";\r\n\r\n\r\nif (valide_count != 0 || count_meme_etab != 0 || other_status_count >= delais_int || size >= delais_int) {\r\n    r1.put(\"verification_process\", \"false\");\r\n}\r\nelse if (habilitation.equals(\"oui\") && \r\n         ( (currentDate.compareTo(habilitation_date) > 0 && \r\n           (Integer.parseInt(currentDate) - Integer.parseInt(habilitation_date)) >= Integer.parseInt(niv)))) {\r\n    r1.put(\"verification_process\", \"habilitation\");\r\n}\r\n\r\n\r\nf.add(r1);\r\nreturn f;\r\n",
+                        "autoHandleFiles": ""
+                    }
+                },
+                "comment": "",
+                "id": "section12",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [
+                {
+                    "elements": [
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Nom d'établissement",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "etablissement",
+                                "placeholder": "",
+                                "value": "",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Cycle",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "cycle",
+                                "placeholder": "",
+                                "value": "",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Niveau",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "niveau",
+                                "placeholder": "",
+                                "value": "",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        }
+                    ],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "50%"}
+                },
+                {
+                    "elements": [
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Domaine",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "domaine",
+                                "placeholder": "",
+                                "value": "",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Specialité",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "specialite",
+                                "placeholder": "",
+                                "value": "",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.form.lib.TextField",
+                            "properties": {
+                                "requiredSanitize": "",
+                                "maxlength": "",
+                                "validator": {
+                                    "className": "",
+                                    "properties": {}
+                                },
+                                "label": "Année universitaire",
+                                "readonly": "",
+                                "size": "",
+                                "workflowVariable": "",
+                                "style": "",
+                                "id": "annee_universitaire",
+                                "placeholder": "",
+                                "value": "#date.yyyy# / #date.DAY+365.yyyy#",
+                                "readonlyLabel": "",
+                                "storeNumeric": ""
+                            }
+                        }
+                    ],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "50%"}
+                }
+            ],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionHidden": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "Information de formation",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "true",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section5",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.SubForm",
+                    "properties": {
+                        "style-background-color": "#FFFFFF",
+                        "parentSubFormId": "",
+                        "permissionHidden": "",
+                        "readonly": "true",
+                        "loadBinder": {
+                            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+                            "properties": {}
+                        },
+                        "noframe": "",
+                        "formDefId": "visualisation_info_etud",
+                        "subFormParentId": "",
+                        "id": "sub_completer_votre_profile",
+                        "label": "",
+                        "storeBinder": {
+                            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+                            "properties": {}
+                        },
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section1",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "activityprocessid",
+                            "value": "#assignment.processId#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "mail_directeur",
+                            "value": ""
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "Documents requis",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section10",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.FileUpload",
+                    "properties": {
+                        "resizeMethod": "",
+                        "permissionType": "",
+                        "padding": "",
+                        "maxSizeMsg": "Limite de taille de fichier dépassée",
+                        "resizeWidth": "",
+                        "multiple": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "maxSize": "2052",
+                        "label": "Copie du CIN",
+                        "resizeQuality": "0.8",
+                        "removeFile": "",
+                        "readonly": "",
+                        "attachment": "true",
+                        "size": "",
+                        "fileTypeMsg": "type de fichier invalide",
+                        "id": "copie_CIN",
+                        "resizeHeight": "",
+                        "fileType": ".pdf"
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "nationalite_etudi",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "TUN",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section8",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.FileUpload",
+                    "properties": {
+                        "resizeMethod": "",
+                        "permissionType": "",
+                        "padding": "",
+                        "maxSizeMsg": "Limite de taille de fichier dépassée",
+                        "resizeWidth": "",
+                        "multiple": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "maxSize": "2052",
+                        "label": "Copie du passeport",
+                        "resizeQuality": "0.8",
+                        "removeFile": "",
+                        "readonly": "",
+                        "attachment": "true",
+                        "size": "",
+                        "fileTypeMsg": "type de fichier invalide",
+                        "id": "copie_passeport",
+                        "resizeHeight": "",
+                        "fileType": ".pdf"
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "nationalite_etudi",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "ETR",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section9",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.FileUpload",
+                        "properties": {
+                            "resizeMethod": "",
+                            "permissionType": "",
+                            "padding": "",
+                            "maxSizeMsg": "Limite de taille de fichier dépassée",
+                            "resizeWidth": "",
+                            "multiple": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "maxSize": "2052",
+                            "label": "Diplôme du baccalauréat",
+                            "resizeQuality": "0.8",
+                            "removeFile": "",
+                            "readonly": "",
+                            "attachment": "true",
+                            "size": "",
+                            "fileTypeMsg": "type de fichier invalide",
+                            "id": "diplome_baccalaureat",
+                            "resizeHeight": "",
+                            "fileType": ".pdf"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.FileUpload",
+                        "properties": {
+                            "resizeMethod": "",
+                            "permissionType": "",
+                            "padding": "",
+                            "maxSizeMsg": "Limite de taille de fichier dépassée",
+                            "resizeWidth": "",
+                            "multiple": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "maxSize": "2052",
+                            "label": "Relevé du notes du Baccalauréat",
+                            "resizeQuality": "0.8",
+                            "removeFile": "",
+                            "readonly": "",
+                            "attachment": "true",
+                            "size": "",
+                            "fileTypeMsg": "type de fichier invalide",
+                            "id": "releve_note_bac",
+                            "resizeHeight": "",
+                            "fileType": ".pdf"
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "header-style-hover-background-color": "#657FC3",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section2",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.FileUpload",
+                        "properties": {
+                            "resizeMethod": "",
+                            "permissionType": "",
+                            "padding": "",
+                            "maxSizeMsg": "Limite de taille de fichier dépassée",
+                            "resizeWidth": "",
+                            "multiple": "true",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "maxSize": "2052",
+                            "label": "Relevé du notes des années universitaires",
+                            "resizeQuality": "0.8",
+                            "removeFile": "",
+                            "readonly": "",
+                            "attachment": "true",
+                            "size": "",
+                            "fileTypeMsg": "type de fichier invalide",
+                            "id": "Releve_note_annee_universitaire",
+                            "resizeHeight": "",
+                            "fileType": ".pdf"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.FileUpload",
+                        "properties": {
+                            "resizeMethod": "",
+                            "permissionType": "",
+                            "padding": "",
+                            "maxSizeMsg": "Limite de taille de fichier dépassée",
+                            "resizeWidth": "",
+                            "multiple": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "maxSize": "2052",
+                            "label": "Attestation de réussite de l'année d'étude précédente",
+                            "resizeQuality": "0.8",
+                            "removeFile": "",
+                            "readonly": "",
+                            "attachment": "true",
+                            "size": "",
+                            "fileTypeMsg": "type de fichier invalide",
+                            "id": "Attestation_reussite_annee_prec",
+                            "resizeHeight": "",
+                            "fileType": ".pdf"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.FileUpload",
+                        "properties": {
+                            "resizeMethod": "",
+                            "permissionType": "",
+                            "padding": "",
+                            "maxSizeMsg": "Limite de taille de fichier dépassée",
+                            "resizeWidth": "",
+                            "multiple": "",
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": ""
+                                }
+                            },
+                            "maxSize": "2052",
+                            "label": "Copie du diplôme universitaire",
+                            "resizeQuality": "0.8",
+                            "removeFile": "",
+                            "readonly": "",
+                            "attachment": "true",
+                            "size": "",
+                            "fileTypeMsg": "type de fichier invalide",
+                            "id": "copie_du_diplome_universitaire",
+                            "resizeHeight": "",
+                            "fileType": ".pdf"
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "autre_diplome",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "true",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section13",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.apps.form.lib.CustomHTML",
+                    "properties": {
+                        "requiredSanitize": "",
+                        "autoPopulate": "",
+                        "label": "",
+                        "id": "field21",
+                        "value": "<style>\r\n/* Heartbeat Animation */\r\n@keyframes heartbeat {\r\n    0% { transform: scale(1); }\r\n    50% { transform: scale(1.2); }\r\n    100% { transform: scale(1); }\r\n}\r\n.heartbeat-icon {\r\n    animation: heartbeat 1s infinite;\r\n}\r\n.container {\r\n    overflow: hidden;\r\n}\r\n\r\n/* Hide BlockUI elements */\r\n.blockUI, .blockMsg, .blockPage, .blockUI.blockOverlay {\r\n    display: none !important;\r\n}\r\n<\/style>\r\n<script>\r\n(function () {\r\n    const regex1 = /_ja_inbox$/;\r\n    const regex2 = /all_assigments/;\r\n    const regex3 = /action=assignmentSubmit/;\r\n    const regex4 = /_ja_inbox\\?mode=assignment/;\r\n    const regex5 = /_ja_inbox.*_action=submit&_mode=assignment/;\r\n\r\n    const msgFlash = \"Votre demande d'inscription a été enregistrée avec succès\";\r\n    const typeFlash = \"success\";\r\n\r\n    if (\r\n        (regex1.test(window.location.href) && !regex4.test(window.location.href)) ||\r\n        regex2.test(window.location.href) ||\r\n        regex3.test(window.location.href)\r\n    ) {\r\n        window.location.replace(`/jw/web/userview/appcenter/home/_/liste_demande_etudiant?type=${encodeURIComponent(typeFlash)}&msg=${encodeURIComponent(msgFlash)}`);\r\n    }\r\n\r\n    const originalFetch = window.fetch;\r\n    window.fetch = async function (...args) {\r\n        const requestUrl = args[0];\r\n        const matchesPattern = regex1.test(requestUrl) || regex2.test(requestUrl) || regex3.test(requestUrl) || regex5.test(requestUrl);\r\n\r\n        if (matchesPattern && !regex4.test(requestUrl)) {\r\n            if (regex5.test(requestUrl) || regex3.test(requestUrl)) {\r\n                try {\r\n                    const response = await originalFetch.apply(this, args);\r\n\r\n                    if (response.ok) {\r\n                        const htmlText = await response.text();\r\n                        const parser = new DOMParser();\r\n                        const doc = parser.parseFromString(htmlText, \"text/html\");\r\n                        const specificElement = doc.querySelector(\".form-message.form-errors\");\r\n\r\n                        if (!specificElement) {\r\n                            window.location.replace(`/jw/web/userview/appcenter/home/_/liste_demande_etudiant?type=${encodeURIComponent(typeFlash)}&msg=${encodeURIComponent(msgFlash)}`);\r\n                            return new Promise(() => {});\r\n                        }\r\n                    } else {\r\n                        window.location.replace(`/jw/web/userview/appcenter/home/_/liste_demande_etudiant?type=${encodeURIComponent(typeFlash)}&msg=${encodeURIComponent(msgFlash)}`);\r\n                        return new Promise(() => {});\r\n                    }\r\n                } catch {\r\n                    window.location.replace(`/jw/web/userview/appcenter/home/_/liste_demande_etudiant?type=${encodeURIComponent(typeFlash)}&msg=${encodeURIComponent(msgFlash)}`);\r\n                    return new Promise(() => {});\r\n                }\r\n            } else {\r\n                window.location.href = `/jw/web/userview/appcenter/home/_/liste_demande_etudiant?type=${encodeURIComponent(typeFlash)}&msg=${encodeURIComponent(msgFlash)}`;\r\n                return new Promise(() => {});\r\n            }\r\n        }\r\n        return originalFetch.apply(this, args);\r\n    };\r\n})();\r\n<\/script>\r\n<script>\r\n$(document).ready(function () {\r\n    const urlParams = new URLSearchParams(window.location.search);\r\n    const activityId = urlParams.get('activityId');\r\n    const host = window.location.protocol + \"//\" + window.location.host + \"/jw\";\r\n    const redirectUrl = host + '/web/userview/appcenter/home/_/welcome';\r\n    const redirectUrl2 = host + '/web/userview/appcenter/home/_/list_for';\r\n\r\n    // Show confirmation modal if certain conditions are met\r\n    const demandeUser = document.getElementById('verification_process')?.value;\r\n    if (demandeUser === 'false' || demandeUser === 'habilitation') {\r\n        $('#confirmationModal').modal({ backdrop: 'static', keyboard: false });\r\n\r\n        let modalMessage = demandeUser === 'false'\r\n            ? `<p><i class=\"fa fa-exclamation-triangle heartbeat-icon\" style=\"color: red;\"><\/i> Vous avez déjà une demande en cours.<\/p>`\r\n            : `<p><i class=\"fa fa-exclamation-triangle heartbeat-icon\" style=\"color: red;\"><\/i> L'habilitation de cette formation est expirée.<\/p>`;\r\n\r\n        $('#confirmationModal .modal-body').html(modalMessage);\r\n    }\r\n\r\n    // Modal confirmation click\r\n    $(\"#confirmationModal .confirm-primary\").on(\"click\", function () {\r\n        $('#confirmationModal').modal('hide');\r\n        $.blockUI({\r\n            css: {\r\n                border: 'none',\r\n                padding: '15px',\r\n                backgroundColor: '#000',\r\n                '-webkit-border-radius': '10px',\r\n                '-moz-border-radius': '10px',\r\n                opacity: .3,\r\n                color: '#fff'\r\n            },\r\n            message: \"<h1>Please wait...<\/h1>\"\r\n        });\r\n\r\n        AssignmentManager.completeAssignment(host, activityId);\r\nwindow.location.href = host + '/web/userview/appcenter/home/_/list_for';\r\n    });\r\n\r\n    // Cancel button handler (assumes an element `cancel` exists in the DOM)\r\n    const cancel = document.getElementById(\"cancel\");\r\n    if (cancel) {\r\n        cancel.addEventListener(\"click\", function () {\r\n            AssignmentManager.completeAssignmentWithVariable(host, activityId, \"var_verif_kill=false\");\r\n\r\n            const redirectUrlWithParams = `${redirectUrl2}?type=${encodeURIComponent(\"success\")}&msg=${encodeURIComponent(\"Votre demande a été annulé\")}`;\r\n            setTimeout(() => window.location.href = redirectUrlWithParams, 700);\r\n        });\r\n    }\r\n\r\n    // Secondary confirmation modal logic\r\n    $(\"#assignmentComplete\").on(\"click\", function (event) {\r\n        event.preventDefault();\r\n        $('#confirmationModal1').modal('show');\r\n    });\r\n\r\n    $(\"#confirmationModal1 .confirm-secondary\").on(\"click\", function (event) {\r\n        event.preventDefault();\r\n        $('#confirmationModal1').modal('hide');\r\n        $(\"#assignmentComplete, #submit\").off(\"click\").trigger(\"click\");\r\n    });\r\n\r\n    $(\"#confirmationModal1 .cancel-secondary\").on(\"click\", function () {\r\n        $('#confirmationModal1').modal('hide');\r\n    });\r\n});\r\n<\/script>\r\n<!-- First Modal: Existing Request / Habilitation Expired -->\r\n<div class=\"modal fade\" id=\"confirmationModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"confirmationModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\"><\/div>\r\n      <div class=\"modal-body\">\r\n        <p><i class=\"fa fa-exclamation-triangle heartbeat-icon\" style=\"color: red;\"><\/i> Vous avez déjà une demande en cours.<\/p>\r\n      <\/div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-primary confirm-primary\">Retourner<\/button>\r\n      <\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>\r\n\r\n<!-- Second Modal: Submission Confirmation -->\r\n<div class=\"modal fade\" id=\"confirmationModal1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"confirmationModalLabel1\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"confirmationModalLabel1\">Confirmation<\/h5>\r\n        <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;<\/span>\r\n        <\/button>\r\n      <\/div>\r\n      <div class=\"modal-body\">\r\n        <p>Confirmez-vous la soumission de votre demande d'inscription à l'établissement ?<\/p>\r\n      <\/div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-primary confirm-secondary\">Oui<\/button>\r\n        <button type=\"button\" class=\"btn btn-primary cancel-secondary\" data-dismiss=\"modal\">Non<\/button>\r\n      <\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>\r\n"
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section14",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        }
+    ],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "noPermissionMessage": "",
+        "loadBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "name": "Visualisation demande inscription",
+        "description": "",
+        "postProcessorRunOn": "create",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "id": "visualisation_demande",
+        "postProcessor": {
+            "className": "",
+            "properties": {}
+        },
+        "storeBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "tableName": "inscription_ecole"
+    }
+}

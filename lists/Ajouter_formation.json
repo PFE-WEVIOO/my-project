@@ -1,0 +1,247 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-edit\"><\/i> ",
+                "href": "ajouter_une_formation?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.FormRowDeleteDataListAction",
+            "id": "rowAction_1",
+            "properties": {
+                "deleteFiles": "true",
+                "deleteGridData": "true",
+                "formDefId": "ajout_formation",
+                "deleteSubformData": "true",
+                "rules": [],
+                "label": "<i class=\"far fa-trash-alt\"><\/i> ",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "abortRelatedRunningProcesses": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.form.model.Form;\nimport org.joget.apps.form.service.FormService;\nimport org.joget.apps.form.service.FormUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.*;\nimport org.joget.apps.form.service.*;\nimport java.sql.*;\nimport org.apache.commons.collections.SequencedHashMap;\nimport java.util.*;\nimport org.joget.commons.util.UuidGenerator;\nimport org.joget.workflow.model.service.*;\nimport org.joget.workflow.model.WorkflowProcessResult;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport java.time.LocalDate;\nimport java.time.format.DateTimeFormatter;\nimport java.time.format.DateTimeParseException;\nimport org.joget.apps.app.service.AppService;\nimport java.util.Arrays;\n \nimport org.joget.apps.form.model.FormData;\nimport org.joget.commons.util.UuidGenerator;\nimport java.lang.Thread;\n \nString uuid = UuidGenerator.getInstance().getUuid();\n \n\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\nConnection con = null;\nPreparedStatement stmtInsert = null;\nResultSet rs = null;\n \n\nString libelle = \"\";\n\n\n \n \n\n// get \ntry {\ncon = ds.getConnection();\n\n \nif (!con.isClosed()) {\n \n \n    \n    String selectSql = \"select a.c_domaine from app_fd_domaine a join app_fd_formations b on a.c_uuid = b.c_domaine where b.c_domaine = '\"+value+\"' ;\";    \n    \n    \n    \n    stmtInsert = con.prepareStatement(selectSql);\n\n    rs = stmtInsert.executeQuery();\n    if (rs.next()) {\n        libelle = rs.getString(1);\n \n      }   \n \n}\n} catch (SQLException e) {\n    LogUtil.info(\"error update DAO\", e.getMessage());\n} finally {\n    try {\n        if (con != null) {\n            con.close();\n        }\n    } catch (Exception ex) {\n    }\n}\n\nreturn \"<span>\" + libelle + \"<\/span>\";"}
+            },
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "domaine",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "discipline",
+                    "formDefId": "discipline",
+                    "formatting": ""
+                }
+            },
+            "label": "Diplôme",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "discipline",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "specialite",
+                    "formDefId": "specialite",
+                    "formatting": ""
+                }
+            },
+            "label": "Spécialité",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "specialite",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "duree_formation",
+            "id": "column_2",
+            "label": "Durée de formation",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.joget.commons.util.UuidGenerator;\r\n\r\n\r\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\nConnection con = null;\r\nPreparedStatement stmt = null;\r\nResultSet rs = null;\r\n\r\nint count = 0;\r\n\r\n// Logging input value and UUID\r\nLogUtil.info(\"check-formation\",value);\r\n\r\ntry {\r\n    con = ds.getConnection();\r\n    LogUtil.info(\"check-formation\", \"Database connection established.\");\r\n\r\n    if (!con.isClosed()) {\r\n        // Adding delimiters to avoid partial matches\r\n        String selectSql = \"SELECT COUNT(*) FROM app_fd_etablissement WHERE CONCAT(';', c_formation, ';') LIKE ?;\";\r\n        LogUtil.info(\"check-formation\", \"Prepared SQL: \" + selectSql);\r\n\r\n        stmt = con.prepareStatement(selectSql);\r\n\r\n        String searchPattern = \"%;\" + value + \";%\";\r\n        LogUtil.info(\"check-formation\", \"Using search pattern: \" + searchPattern);\r\n\r\n        stmt.setString(1, searchPattern);\r\n\r\n        rs = stmt.executeQuery();\r\n        if (rs.next()) {\r\n            count = rs.getInt(1);\r\n            LogUtil.info(\"check-formation\", \"Count of matched formations: \" + count);\r\n        }\r\n    }\r\n} catch (SQLException e) {\r\n    LogUtil.error(\"check-formation\", e, \"Error during SQL execution: \" + e.getMessage());\r\n} finally {\r\n    try {\r\n        if (rs != null) {\r\n            rs.close();\r\n            LogUtil.info(\"check-formation\", \"ResultSet closed.\");\r\n        }\r\n        if (stmt != null) {\r\n            stmt.close();\r\n            LogUtil.info(\"check-formation\", \"PreparedStatement closed.\");\r\n        }\r\n        if (con != null) {\r\n            con.close();\r\n            LogUtil.info(\"check-formation\", \"Connection closed.\");\r\n        }\r\n    } catch (Exception ex) {\r\n        LogUtil.warn(\"check-formation\", \"Error closing resources: \" + ex.getMessage());\r\n    }\r\n}\r\n\r\nif (count == 0) {\r\n    LogUtil.info(\"check-formation\", \"Returning TRUE for value: \" + value);\r\n    return \"<span>True<\/span>\";\r\n} else {\r\n    LogUtil.info(\"check-formation\", \"Returning FALSE for value: \" + value);\r\n    return \"<span>False<\/span>\";\r\n}\r\n"}
+            },
+            "label": "ID",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "id",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "domaine",
+            "id": "filter_2",
+            "label": "Domaine",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "domaine",
+                            "labelColumn": "domaine",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "uuid"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-2269526-fn_domaine"
+        },
+        {
+            "hidden": "",
+            "name": "discipline",
+            "id": "filter_3",
+            "label": "Diplôme",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "discipline",
+                            "labelColumn": "discipline",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "id"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-2269526-fn_discipline"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Ajouter une formation",
+    "id": "Ajouter_formation",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "ajout_formation",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_2",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "ajouter_une_formation?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

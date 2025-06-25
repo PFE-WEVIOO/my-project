@@ -1,0 +1,425 @@
+{
+    "elements": [
+        {
+            "elements": [
+                {
+                    "elements": [{
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                                "properties": {
+                                    "addEmptyOption": "true",
+                                    "groupingColumn": "",
+                                    "formDefId": "ajout_formation",
+                                    "labelColumn": "formation",
+                                    "extraCondition": "",
+                                    "cacheInterval": "",
+                                    "emptyLabel": "",
+                                    "idColumn": "id"
+                                }
+                            },
+                            "multiple": "",
+                            "options": [],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Formation",
+                            "id": "formation",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "33%"}
+                },
+                {
+                    "elements": [{
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "multiple": "",
+                            "options": [
+                                {
+                                    "label": "--",
+                                    "value": "",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "1",
+                                    "value": "1",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "2",
+                                    "value": "2",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "3",
+                                    "value": "3",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "4",
+                                    "value": "4",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "5",
+                                    "value": "5",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "6",
+                                    "value": "6",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Niveau demandé",
+                            "id": "niveau_demande",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "33%"}
+                },
+                {
+                    "elements": [{
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "multiple": "",
+                            "options": [
+                                {
+                                    "label": "--",
+                                    "value": "",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Bac",
+                                    "value": "Bac",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Fac",
+                                    "value": "Fac",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Diplôme obtenu",
+                            "id": "diplome_obtenu",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "33%"}
+                }
+            ],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "header-style-background-color": "#007BFF",
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "Ajouter une contrainte",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section2",
+                "join": "",
+                "readonlyLabel": "",
+                "header-style-color": "#FFFFFF"
+            }
+        },
+        {
+            "elements": [{
+                "elements": [{
+                    "className": "org.joget.marketplace.AjaxSelectbox",
+                    "properties": {
+                        "minTermLength": "0",
+                        "idField": "nature_de_bac",
+                        "afterTypeDelay": "300",
+                        "defaultOptions": "100",
+                        "multiple": "true",
+                        "validator": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "requestParams": [],
+                        "label": "Nature du baccalauréat",
+                        "listId": "nature_bac",
+                        "allowEmpty": "",
+                        "readonly": "",
+                        "keepTypingMsg": "Continue typing to search",
+                        "width": "70%",
+                        "lookingForMsg": "Retrieving results",
+                        "displayField": "nature_de_bac",
+                        "workflowVariable": "",
+                        "id": "nature_bac",
+                        "placeholder": "",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                }],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "diplome_obtenu",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Bac",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section4",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [
+                {
+                    "elements": [{
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "multiple": "",
+                            "options": [
+                                {
+                                    "label": "--",
+                                    "value": "",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "LMD",
+                                    "value": "LMD",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Diplôme d'ingénieur",
+                                    "value": "Diplôme d'ingénieur",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Diplôme d'architecture",
+                                    "value": "Diplôme d'architecture",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "DUT",
+                                    "value": "DUT",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Maîtrise",
+                                    "value": "Maîtrise",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Technicien ISET",
+                                    "value": "Technicien ISET",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Autre",
+                                    "value": "Autre",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Licence",
+                                    "value": "Licence",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Cycle obtenu",
+                            "id": "cycle_obtenu",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "50%"}
+                },
+                {
+                    "elements": [{
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "multiple": "",
+                            "options": [
+                                {
+                                    "label": "--",
+                                    "value": "",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "1",
+                                    "value": "1",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "2",
+                                    "value": "2",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "3",
+                                    "value": "3",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "4",
+                                    "value": "4",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "5",
+                                    "value": "5",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Niveau obtenu",
+                            "id": "niveau_obtenu",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }],
+                    "className": "org.joget.apps.form.model.Column",
+                    "properties": {"width": "50%"}
+                }
+            ],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "diplome_obtenu",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "Fac",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section3",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        }
+    ],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "noPermissionMessage": "",
+        "loadBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "name": "Matrice de correspondance des formations",
+        "description": "",
+        "postProcessorRunOn": "create",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "id": "matrice_corres",
+        "postProcessor": {
+            "className": "",
+            "properties": {}
+        },
+        "section-header-style-color": "#FFFFFF",
+        "storeBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "tableName": "matrice_corres"
+    }
+}

@@ -1,0 +1,233 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"fas fa-edit\"><\/i> ",
+                "href": "ajouter_un_enseignant?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.FormRowDeleteDataListAction",
+            "id": "rowAction_1",
+            "properties": {
+                "deleteFiles": "",
+                "deleteGridData": "",
+                "formDefId": "ajouter_enseignant",
+                "deleteSubformData": "",
+                "rules": [],
+                "label": "<i class=\"far fa-trash-alt\"><\/i> ",
+                "confirmation": "Voulez-vous confirmer la suppression d'enseignant  ?",
+                "datalist_type": "row_action",
+                "abortRelatedRunningProcesses": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "annee_universitaire",
+            "id": "column_7",
+            "label": "Année universitaire",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "periode",
+            "id": "column_8",
+            "label": "Période",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "nom",
+            "id": "column_0",
+            "label": "Nom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "prenom",
+            "id": "column_1",
+            "label": "Prénom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "enseignant",
+            "id": "column_6",
+            "label": "Type Enseignant",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\n\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\n\r\nString cin = \"\";\r\nString pass = \"\";\r\nString nat = \"\";\r\nString enseignant = \"\";\r\n\r\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\nConnection con = null;\r\nPreparedStatement stmt = null;\r\nResultSet rs = null;\r\n\r\ntry {\r\n    con = ds.getConnection();\r\n\r\n    if (!con.isClosed()) {\r\n        // Ensure 'value' is defined properly before using\r\n        String selectSql = \"SELECT c_enseignant, c_nationalite, c_numero_cin, c_numero_passport FROM app_fd_enseignants WHERE id = ?\";\r\n\r\n        stmt = con.prepareStatement(selectSql);\r\n        stmt.setString(1, value); // assuming 'value' is a row ID (sanitize input!)\r\n\r\n        rs = stmt.executeQuery();\r\n        if (rs.next()) {\r\n            cin = rs.getString(\"c_numero_cin\");\r\n            pass = rs.getString(\"c_numero_passport\");\r\n            nat = rs.getString(\"c_nationalite\");\r\n            enseignant = rs.getString(\"c_enseignant\");\r\n        }\r\n    }\r\n} catch (SQLException e) {\r\n    LogUtil.error(\"Error in DAO operation\", e);\r\n} finally {\r\n    try {\r\n        if (rs != null) rs.close();\r\n        if (stmt != null) stmt.close();\r\n        if (con != null) con.close();\r\n    } catch (SQLException ex) {\r\n        LogUtil.error(\"Error closing resources\", ex);\r\n    }\r\n}\r\n\r\n// Assuming you wanted to check if the value of \"enseignant\" equals \"Permanents\"\r\nif (\"Permanents\".equals(enseignant)) {\r\n    return \"<span>\" + cin + \"<\/span>\";\r\n} else if (\"ETR\".equals(nat)) {\r\n    return \"<span>\" + pass + \"<\/span>\";\r\n} else {\r\n    return \"<span>\" + cin + \"<\/span>\";\r\n}\r\n"}
+            },
+            "label": "Numéro CIN/Passeport",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "id",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "discipline_enseignee",
+            "id": "column_3",
+            "label": "Discipline enseignée",
+            "sortable": "false",
+            "datalist_type": "column"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "name": "nom",
+            "id": "filter_4",
+            "label": "Nom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3681177-fn_nom"
+        },
+        {
+            "name": "prenom",
+            "id": "filter_3",
+            "label": "Prénom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3681177-fn_prenom"
+        },
+        {
+            "name": "numero_passport",
+            "id": "filter_2",
+            "label": "Numéro Passport",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_numero_passport"
+        },
+        {
+            "name": "numero_cin",
+            "id": "filter_1",
+            "label": "Numéro CIN",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_numero_cin"
+        },
+        {
+            "hidden": "true",
+            "name": "createdBy",
+            "id": "filter_5",
+            "label": "Créé Par",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "#currentUser.username#",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_createdBy"
+        },
+        {
+            "hidden": "",
+            "name": "enseignant",
+            "id": "filter_0",
+            "label": "Enseignant",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "ajouter_enseignant",
+                            "labelColumn": "enseignant",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "enseignant"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_enseignant"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Ajouter un enseignant",
+    "id": "ajouter_enseignant",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "ajouter_enseignant",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "ajouter_un_enseignant?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

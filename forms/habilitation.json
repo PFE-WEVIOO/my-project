@@ -1,0 +1,215 @@
+{
+    "elements": [
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.Radio",
+                        "properties": {
+                            "fullWidth": "",
+                            "controlField": "",
+                            "readonly": "",
+                            "optionsBinder": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "options": [
+                                {
+                                    "label": "Oui",
+                                    "value": "oui",
+                                    "grouping": ""
+                                },
+                                {
+                                    "label": "Non",
+                                    "value": "non",
+                                    "grouping": ""
+                                }
+                            ],
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "label": "Avec habilitation ?",
+                            "id": "habilitaion_check",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "id",
+                            "value": "#requestParam.formation#;#requestParam.etab#"
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.HiddenField",
+                        "properties": {
+                            "useDefaultWhenEmpty": "",
+                            "validator": {
+                                "className": "",
+                                "properties": {}
+                            },
+                            "workflowVariable": "",
+                            "id": "formation",
+                            "value": "#requestParam.formation#"
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section2",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        },
+        {
+            "elements": [{
+                "elements": [
+                    {
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "org.joget.apps.form.lib.BeanShellFormBinder",
+                                "properties": {
+                                    "cacheInterval": "",
+                                    "script": "import org.joget.apps.app.service.AppUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.FormData;\nimport org.joget.apps.form.model.FormRow;\nimport org.joget.apps.form.model.FormRowSet;\nimport org.joget.apps.form.service.FormUtil;\n\nimport java.util.Calendar;\n\npublic FormRowSet load(Element element, String primaryKey, FormData formData) {\n    FormRowSet rows = new FormRowSet();\n\n    // Add default value \"--\"\n    FormRow defaultOption = new FormRow();\n    defaultOption.setProperty(FormUtil.PROPERTY_VALUE, \"--\");\n    defaultOption.setProperty(FormUtil.PROPERTY_LABEL, \"--\");\n    rows.add(defaultOption);\n\n    int currentYear = Calendar.getInstance().get(Calendar.YEAR);\n    for (int year = currentYear; year >= 1950; year--) {\n        FormRow option = new FormRow();\n        option.setProperty(FormUtil.PROPERTY_VALUE, String.valueOf(year));\n        option.setProperty(FormUtil.PROPERTY_LABEL, String.valueOf(year));\n        rows.add(option);\n    }\n\n    return rows;\n}\n\n// Call load method with injected variables\nreturn load(element, primaryKey, formData);\n\n\n"
+                                }
+                            },
+                            "multiple": "",
+                            "options": [],
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.BeanShellValidator",
+                                "properties": {
+                                    "decoration": "",
+                                    "script": "import java.sql.*;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.apps.form.model.Element;\r\nimport org.joget.apps.form.model.Form;\r\nimport org.joget.apps.form.model.FormData;\r\nimport org.joget.apps.form.service.FormUtil;\r\n\r\n\r\n    public boolean validate(Element element, FormData formData, String[] values) {\r\n        boolean result = true; // Initialize result to true\r\n        try {\r\n            Form form = FormUtil.findRootForm(element);\r\n            \r\n            // Get the starting year\r\n            String field1Id = \"annee_debut\";\r\n            Element field1 = FormUtil.findElement(field1Id, form, formData);\r\n            String[] idmaster1 = FormUtil.getElementPropertyValues(field1, formData);\r\n            String recordid1 = String.valueOf(idmaster1[0]);\r\n\r\n            // Get the ending year\r\n            String field2Id = \"annee_fin\";\r\n            Element field2 = FormUtil.findElement(field2Id, form, formData);\r\n            String[] idmaster2 = FormUtil.getElementPropertyValues(field2, formData);\r\n            String recordid2 = String.valueOf(idmaster2[0]);\r\n\r\n            // Compare the years\r\n            if (Integer.parseInt(recordid1) > Integer.parseInt(recordid2)) {\r\n                result = false;\r\n                String id = FormUtil.getElementParameterName(element);\r\n                formData.addFormError(id, \"L'année de début doit être antérieure à l'année de fin.\");\r\n            }\r\n        } catch (Exception e) {\r\n            result = false;\r\n            e.printStackTrace(); // Log exception for debugging\r\n        }\r\n\r\n        return result;\r\n    }\r\n\r\n\r\nreturn validate(element, formData, values);"
+                                }
+                            },
+                            "workflowVariable": "",
+                            "label": "Année de début",
+                            "id": "annee_debut",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    },
+                    {
+                        "className": "org.joget.apps.form.lib.SelectBox",
+                        "properties": {
+                            "controlField": "",
+                            "readonly": "",
+                            "size": "",
+                            "optionsBinder": {
+                                "className": "org.joget.apps.form.lib.BeanShellFormBinder",
+                                "properties": {
+                                    "cacheInterval": "",
+                                    "script": "import org.joget.apps.app.service.AppUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.FormData;\nimport org.joget.apps.form.model.FormRow;\nimport org.joget.apps.form.model.FormRowSet;\nimport org.joget.apps.form.service.FormUtil;\n\nimport java.util.Calendar;\n\npublic FormRowSet load(Element element, String primaryKey, FormData formData) {\n    FormRowSet rows = new FormRowSet();\n\n    // Add default value \"--\"\n    FormRow defaultOption = new FormRow();\n    defaultOption.setProperty(FormUtil.PROPERTY_VALUE, \"--\");\n    defaultOption.setProperty(FormUtil.PROPERTY_LABEL, \"--\");\n    rows.add(defaultOption);\n\n    int currentYear = Calendar.getInstance().get(Calendar.YEAR);\n    for (int year = currentYear + 10 ; year >= 1950; year--) {\n        FormRow option = new FormRow();\n        option.setProperty(FormUtil.PROPERTY_VALUE, String.valueOf(year));\n        option.setProperty(FormUtil.PROPERTY_LABEL, String.valueOf(year));\n        rows.add(option);\n    }\n\n    return rows;\n}\n\n// Call load method with injected variables\nreturn load(element, primaryKey, formData);\n\n\n"
+                                }
+                            },
+                            "multiple": "",
+                            "options": [],
+                            "validator": {
+                                "className": "org.joget.apps.form.lib.DefaultValidator",
+                                "properties": {
+                                    "type": "",
+                                    "message": "",
+                                    "mandatory": "true"
+                                }
+                            },
+                            "workflowVariable": "",
+                            "label": "Année de fin",
+                            "id": "annee_fin",
+                            "value": "",
+                            "readonlyLabel": ""
+                        }
+                    }
+                ],
+                "className": "org.joget.apps.form.model.Column",
+                "properties": {"width": "100%"}
+            }],
+            "className": "org.joget.apps.form.model.Section",
+            "properties": {
+                "visibilityControl": "habilitaion_check",
+                "permissionReadonly": "",
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "label": "",
+                "reverse": "",
+                "storeBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "visibilityValue": "oui",
+                "regex": "",
+                "readonly": "",
+                "loadBinder": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "id": "section1",
+                "join": "",
+                "readonlyLabel": ""
+            }
+        }
+    ],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "noPermissionMessage": "",
+        "loadBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "name": "Habilitation",
+        "description": "",
+        "postProcessorRunOn": "create",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "id": "habilitation",
+        "postProcessor": {
+            "className": "",
+            "properties": {}
+        },
+        "storeBinder": {
+            "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+            "properties": {}
+        },
+        "tableName": "habilitation"
+    }
+}

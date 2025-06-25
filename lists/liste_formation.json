@@ -1,0 +1,388 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "considerFilterWhenGetTotal": "",
+    "useSession": "",
+    "responsiveMode": "",
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "tab_id;c_discipline;c_domaine;c_specialite;id;c_niveau_demande",
+            "hrefParam": "etab;disc;dom;spec;formation;niveau",
+            "rules": [],
+            "label": "<i class=\"fas fa-check-circle\"><\/i> ",
+            "href": "information_etablissement?embed=true",
+            "confirmation": "",
+            "datalist_type": "row_action",
+            "target": "popup",
+            "header_label": "Détails & Inscription"
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Gouvernorat",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_gouvernorat",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "discipline",
+                    "formDefId": "discipline",
+                    "formatting": ""
+                }
+            },
+            "label": "Diplôme",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_discipline",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.form.model.Form;\nimport org.joget.apps.form.service.FormService;\nimport org.joget.apps.form.service.FormUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.*;\nimport org.joget.apps.form.service.*;\nimport java.sql.*;\nimport org.apache.commons.collections.SequencedHashMap;\nimport java.util.*;\nimport org.joget.commons.util.UuidGenerator;\nimport org.joget.workflow.model.service.*;\nimport org.joget.workflow.model.WorkflowProcessResult;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport java.time.LocalDate;\nimport java.time.format.DateTimeFormatter;\nimport java.time.format.DateTimeParseException;\nimport org.joget.apps.app.service.AppService;\nimport java.util.Arrays;\n \nimport org.joget.apps.form.model.FormData;\nimport org.joget.commons.util.UuidGenerator;\nimport java.lang.Thread;\n \nString uuid = UuidGenerator.getInstance().getUuid();\n \n\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\nConnection con = null;\nPreparedStatement stmtInsert = null;\nResultSet rs = null;\n \n\nString libelle = \"\";\n\n\n \n \n\n// get \ntry {\ncon = ds.getConnection();\n\n \nif (!con.isClosed()) {\n \n \n    \n    String selectSql = \"select a.c_domaine from app_fd_domaine a join app_fd_formations b on a.c_uuid = b.c_domaine where b.c_domaine = '\"+value+\"' ;\";    \n    \n    \n    \n    stmtInsert = con.prepareStatement(selectSql);\n\n    rs = stmtInsert.executeQuery();\n    if (rs.next()) {\n        libelle = rs.getString(1);\n \n      }   \n \n}\n} catch (SQLException e) {\n    LogUtil.info(\"error update DAO\", e.getMessage());\n} finally {\n    try {\n        if (con != null) {\n            con.close();\n        }\n    } catch (Exception ex) {\n    }\n}\n\nreturn \"<span>\" + libelle + \"<\/span>\";"}
+            },
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_domaine",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "specialite",
+                    "formDefId": "specialite",
+                    "formatting": ""
+                }
+            },
+            "label": "Spécialité",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_specialite",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Niveau",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_niveau_demande",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        }
+    ],
+    "draggabletable": "",
+    "cardCollapsible": "",
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "c_etablissement",
+            "id": "filter_0",
+            "label": "Établissement",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select id,c_etablissement from app_fd_etablissement"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_etablissement"
+        },
+        {
+            "hidden": "",
+            "name": "c_gouvernorat",
+            "id": "filter_4",
+            "label": "Gouvernorat",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select id,c_gouvernorat from app_fd_gouvernorat"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_gouvernorat"
+        },
+        {
+            "hidden": "",
+            "name": "c_discipline",
+            "id": "filter_2",
+            "label": "Diplôme",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select id,c_discipline from app_fd_discipline"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_discipline"
+        },
+        {
+            "hidden": "",
+            "name": "c_specialite",
+            "id": "filter_1",
+            "label": "Spécialité",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select distinct a.c_specialite,b.c_specialite from app_fd_formations a join app_fd_specialite b on a.c_specialite = b.id;\n"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_specialite"
+        },
+        {
+            "hidden": "",
+            "name": "c_niveau_demande",
+            "id": "filter_3",
+            "label": "Niveau",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "",
+                        "properties": {}
+                    },
+                    "defaultValue": "",
+                    "options": [
+                        {
+                            "label": "1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "3",
+                            "value": "3"
+                        },
+                        {
+                            "label": "4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "5",
+                            "value": "5"
+                        }
+                    ],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_niveau_demande"
+        },
+        {
+            "hidden": "",
+            "name": "c_domaine",
+            "id": "filter_5",
+            "label": "Domaine",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select c_uuid,c_domaine from app_fd_domaine"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_domaine"
+        }
+    ],
+    "showDataWhenFilterSet": "",
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "hidePageSize": "",
+    "disableResponsive": "",
+    "cardCollapseByDefault": "",
+    "name": "Formation etudiants",
+    "rowActionsMode": "",
+    "showhidecolumns": "",
+    "id": "liste_formation",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "true",
+            "debug": "",
+            "sql": "SELECT \r\n    a.id, \r\n    a.c_domaine, \r\n    a.c_specialite, \r\n    a.c_discipline, \r\n    a.c_formation, \r\n    b.id AS tab_id, \r\n    b.c_etablissement,\r\n    b.c_gouvernorat,\r\n    1 AS c_niveau_demande -- Setting c_niveau_demande to 1 for this part\r\nFROM app_fd_formations a \r\nLEFT JOIN app_fd_etablissement b \r\n    ON b.c_formation LIKE CONCAT('%', a.id, '%')\r\nWHERE a.id NOT IN (\r\n    SELECT c_formation \r\n    FROM app_fd_matrice_corres \r\n)and b.c_etablissement is not null\r\n\r\nUNION ALL -- Use UNION ALL if duplicates are not an issue\r\n\r\nSELECT \r\n    a.id, \r\n    a.c_domaine, \r\n    a.c_specialite, \r\n    a.c_discipline, \r\n    a.c_formation, \r\n    b.id AS tab_id, \r\n    b.c_etablissement,\r\n        b.c_gouvernorat,\r\n\r\n    mc.c_niveau_demande -- Retaining original c_niveau_demande for this part\r\nFROM app_fd_formations a \r\nLEFT JOIN app_fd_etablissement b \r\n    ON b.c_formation LIKE CONCAT('%', a.id, '%')\r\nLEFT JOIN app_fd_matrice_corres mc\r\n    ON mc.c_formation = a.id\r\nWHERE a.id IN ( \r\n    SELECT c_formation \r\n    FROM app_fd_matrice_corres \r\n    WHERE c_diplome_obtenu = 'Bac' \r\n      AND (\r\n          c_nature_bac LIKE CONCAT('%;', '#requestParam.NatureBac#', ';%') OR\r\n          c_nature_bac LIKE CONCAT('%;', '#requestParam.NatureBac#') OR\r\n          c_nature_bac LIKE CONCAT('#requestParam.NatureBac#', ';%') OR\r\n          c_nature_bac = '#requestParam.NatureBac#'\r\n      )\r\n)\r\n",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

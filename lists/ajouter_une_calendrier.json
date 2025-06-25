@@ -1,0 +1,202 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "Modifier",
+                "href": "ajouter_une_calendrier?embed=true",
+                "confirmation": "",
+                "link-css-display-type": "btn btn-sm btn-primary",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.FormRowDeleteDataListAction",
+            "id": "rowAction_1",
+            "properties": {
+                "deleteFiles": "",
+                "deleteGridData": "",
+                "formDefId": "calendrier",
+                "deleteSubformData": "",
+                "rules": [],
+                "label": "<i class=\"far fa-trash-alt\"><\/i> ",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "abortRelatedRunningProcesses": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "titre_dannonce",
+            "id": "column_1",
+            "label": "Titre de l\u2019annonce",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "annee_universitaire",
+            "id": "column_2",
+            "label": "Année universitaire",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "session",
+            "id": "column_3",
+            "label": "Session",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.tutorial.FileLinkDatalistFormatter",
+                "properties": {
+                    "attachment": "",
+                    "formDefId": "calendrier"
+                }
+            },
+            "label": "Calendrier",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "calendrier",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "true",
+            "name": "createdBy",
+            "id": "filter_0",
+            "label": "Créé Par",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "#currentUser.username#",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-2368433-fn_createdBy"
+        },
+        {
+            "hidden": "",
+            "name": "annee_universitaire",
+            "id": "filter_1",
+            "label": "Année universitaire",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "calendrier",
+                            "labelColumn": "annee_universitaire",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "annee_universitaire"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-1927271-fn_annee_universitaire"
+        },
+        {
+            "hidden": "",
+            "name": "session",
+            "id": "filter_3",
+            "label": "Session",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "calendrier",
+                            "labelColumn": "session",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "session"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-2368433-fn_session"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Ajouter une calendrier",
+    "id": "ajouter_une_calendrier",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "calendrier",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "ajouter_une_calendrier?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

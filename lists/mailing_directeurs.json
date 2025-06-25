@@ -1,0 +1,54 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "id_etab",
+            "id": "column_2",
+            "label": "id_etab",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "username",
+            "id": "column_0",
+            "label": "username",
+            "sortable": "false",
+            "datalist_type": "column"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "full_name",
+            "id": "column_1",
+            "label": "full_name",
+            "sortable": "false",
+            "datalist_type": "column"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Mailing de directeurs",
+    "id": "mailing_directeurs",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "SELECT a.username, (select c_etablissement from  app_fd_etablissement where id = c.c_nom_etablissement) AS full_name, c.c_nom_etablissement as id_etab\nFROM dir_user a\nJOIN dir_employment b ON a.id = b.userId\njoin app_fd_directeurs c on a.username = c.c_adresse_electronique_directeur\nWHERE b.departmentId = 'directeurs' and c.c_active = 1",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

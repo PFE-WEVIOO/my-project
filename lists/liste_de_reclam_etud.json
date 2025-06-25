@@ -1,0 +1,137 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "id",
+            "hrefParam": "id",
+            "rules": [],
+            "label": "<i class=\"far fa-eye\"><\/i> ",
+            "href": "visualisation_reclamation_etu?embed=true",
+            "confirmation": "",
+            "datalist_type": "row_action",
+            "target": "popup",
+            "header_label": ""
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "titre",
+            "id": "column_0",
+            "label": "Titre",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "type_de_reclamation",
+            "id": "column_1",
+            "label": "Type de réclamation",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import org.joget.commons.util.LogUtil;\r\n\r\n\r\nString else_msg = \"Cette réclamation est une anomalie pas une demande\";\r\n\r\nif (value == null || value.trim().isEmpty()) {\r\n\r\n    return \"<span>\" + else_msg + \"<\/span>\";\r\n} else {\r\n\r\n    return \"<span>\" + value + \"<\/span>\";\r\n}\r\n"}
+            },
+            "label": "Catégorie de la demande",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "categorie_demande",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date de la demande",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "date_reclamation",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "statut",
+            "id": "column_4",
+            "label": "statut",
+            "sortable": "false"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [{
+        "hidden": "true",
+        "name": "createdBy",
+        "id": "filter_0",
+        "label": "Créé Par",
+        "type": {
+            "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+            "properties": {
+                "defaultValue": "#currentUser.username#",
+                "filterSelection": "",
+                "searchFields": ""
+            }
+        },
+        "datalist_type": "filter",
+        "filterParamName": "d-6679849-fn_createdBy"
+    }],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Liste des reclamations etudiant",
+    "id": "liste_de_reclam_etud",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "reclamation",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter une reclamation",
+            "href": "process_reclamation",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "_top"
+        }
+    }],
+    "order": ""
+}

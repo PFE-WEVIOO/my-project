@@ -1,0 +1,352 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-eye\"><\/i> ",
+                "href": "visual_un_enseignant_ministre?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_2",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-edit\"><\/i> ",
+                "href": "ajouter_un_enseignant_ministre?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.FormRowDeleteDataListAction",
+            "id": "rowAction_3",
+            "properties": {
+                "deleteFiles": "",
+                "deleteGridData": "",
+                "formDefId": "ajouter_enseignant",
+                "deleteSubformData": "",
+                "rules": [],
+                "label": "<i class=\"far fa-trash-alt\"><\/i> ",
+                "confirmation": "Voulez-vous confirmer la suppression d'enseignant  ?",
+                "datalist_type": "row_action",
+                "abortRelatedRunningProcesses": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "annee_universitaire",
+            "id": "column_3",
+            "label": "Année universitaire",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "periode",
+            "id": "column_4",
+            "label": "Période",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "nom",
+            "id": "column_0",
+            "label": "Nom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "prenom",
+            "id": "column_1",
+            "label": "Prénom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Type enseignant",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "enseignant",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_9",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "etablissement",
+                    "formDefId": "etablissement",
+                    "formatting": ""
+                }
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_6",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "annee_universitaire",
+            "id": "filter_6",
+            "label": "Année universitaire",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "ajouter_enseignant",
+                            "labelColumn": "annee_universitaire",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "annee_universitaire"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "placeholder": "",
+                    "submitOnChange": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7647129-fn_annee_universitaire"
+        },
+        {
+            "hidden": "",
+            "name": "periode",
+            "id": "filter_7",
+            "label": "Période",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "",
+                        "properties": {}
+                    },
+                    "defaultValue": "",
+                    "options": [
+                        {
+                            "label": "Semestre 1",
+                            "value": "Semestre 1"
+                        },
+                        {
+                            "label": "Semestre 2",
+                            "value": "Semestre 2"
+                        },
+                        {
+                            "label": "Annuelle",
+                            "value": "Annuelle"
+                        }
+                    ],
+                    "displayFull": "",
+                    "placeholder": "",
+                    "submitOnChange": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7647129-fn_periode"
+        },
+        {
+            "name": "nom",
+            "id": "filter_4",
+            "label": "Nom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3681177-fn_nom"
+        },
+        {
+            "name": "prenom",
+            "id": "filter_3",
+            "label": "Prénom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3681177-fn_prenom"
+        },
+        {
+            "hidden": "",
+            "name": "numero_passport",
+            "id": "filter_2",
+            "label": "Numéro Passeport",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_numero_passport"
+        },
+        {
+            "name": "numero_cin",
+            "id": "filter_1",
+            "label": "Numéro CIN",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3681177-fn_numero_cin"
+        },
+        {
+            "hidden": "",
+            "name": "enseignant",
+            "id": "filter_0",
+            "label": "Enseignant",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "ajouter_enseignant",
+                            "labelColumn": "enseignant",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "enseignant"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3681177-fn_enseignant"
+        },
+        {
+            "hidden": "",
+            "name": "etablissement",
+            "id": "filter_5",
+            "label": "Établissement",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "etablissement",
+                            "labelColumn": "etablissement",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "id"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7647129-fn_etablissement"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Ajouter un enseignant ministre",
+    "id": "ajouter_enseignant_admin",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "ajouter_enseignant",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "ajouter_un_enseignant_ministre?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

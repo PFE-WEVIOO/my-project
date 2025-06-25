@@ -1,0 +1,252 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "id",
+            "hrefParam": "id",
+            "rules": [],
+            "label": "<i class=\"far fa-eye\"><\/i> ",
+            "href": "visualisation_reclamation_etu?embed=true",
+            "confirmation": "",
+            "datalist_type": "row_action",
+            "target": "popup",
+            "header_label": ""
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Numéro Ticket",
+            "id": "column_0",
+            "label": "Numéro Ticket",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Créé Par",
+            "id": "column_1",
+            "label": "Créé Par",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Type Réclamation",
+            "id": "column_2",
+            "label": "Type Réclamation",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Catégorie Demande",
+            "id": "column_3",
+            "label": "Catégorie Demande",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Catégorie Anomalie",
+            "id": "column_4",
+            "label": "Catégorie Anomalie",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date de reclamation",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_date_reclamation",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Traitée par",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "Modifié Par",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_6",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Statut",
+            "id": "column_7",
+            "label": "Statut",
+            "sortable": "false"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "name": "Nom",
+            "id": "filter_4",
+            "label": "Nom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6172083-fn_Nom"
+        },
+        {
+            "name": "Prénom",
+            "id": "filter_3",
+            "label": "Prénom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Prénom"
+        },
+        {
+            "name": "Numéro Ticket",
+            "id": "filter_2",
+            "label": "Numéro Ticket",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Numéro Ticket"
+        },
+        {
+            "name": "Etablissement directeur",
+            "id": "filter_7",
+            "label": "Etablissement directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6172083-fn_Etablissement directeur"
+        },
+        {
+            "name": "Statut",
+            "id": "filter_9",
+            "label": "Statut",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Statut"
+        },
+        {
+            "name": "Agrement",
+            "id": "filter_6",
+            "label": "Agrement",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Agrement"
+        },
+        {
+            "name": "Etablissement",
+            "id": "filter_5",
+            "label": "Etablissement",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Etablissement"
+        },
+        {
+            "name": "ID Étudiant",
+            "id": "filter_0",
+            "label": "ID Étudiant",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_ID Étudiant"
+        },
+        {
+            "name": "Numéro Identification",
+            "id": "filter_1",
+            "label": "Numéro Identification",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Numéro Identification"
+        },
+        {
+            "name": "Nom directeur",
+            "id": "filter_8",
+            "label": "Nom directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Nom directeur"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Liste des reclamation pour ministre",
+    "id": "reclamation_ministre",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "SELECT\na.c_date_reclamation,\n\n    a.id,\n    a.c_num_ticket AS \"Numéro Ticket\",\n    a.createdByName AS \"Créé Par\",\n    a.c_type_de_reclamation AS \"Type Réclamation\",\n    a.c_categorie_demande AS \"Catégorie Demande\",\n    a.c_categorie_danomalie AS \"Catégorie Anomalie\",\n    a.dateCreated AS \"Date Création\",\n    a.c_travailleur AS \"Modifié Par\",\n    a.c_statut AS \"Statut\",\n    b.c_id_etudiant AS \"ID Étudiant\",\n    b.c_num_id AS \"Numéro Identification\",\n    b.c_nom AS \"Nom\",\n    b.c_prenom AS \"Prénom\",\n    b.c_etablissement AS \"Etablissement\",\n    d.c_abreviation_agrement AS \"Agrement\",\n    d.c_nom AS \"Nom directeur\",\n    c.c_etablissement AS \"Etablissement directeur\"\nFROM \n    app_fd_reclamation a \nLEFT JOIN \n    app_fd_inscription_etud b \nON \n    a.c_mail = b.id\nLEFT JOIN \n    app_fd_directeurs d \nON \n    a.c_mail = d.c_adresse_electronique_directeur\nLEFT JOIN \n    app_fd_etablissement c \nON \n    d.c_nom_etablissement = c.id\n\n",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter une réclamation",
+            "href": "auto_rec?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}
