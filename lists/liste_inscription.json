@@ -1,0 +1,278 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-eye\"><\/i> ",
+                "href": "visualisation_inscription?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_2",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"fas fa-history\"><\/i> ",
+                "href": "ecran_historique_des_demandes_etud?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_3",
+            "properties": {
+                "rules": [
+                    {
+                        "field": "steps",
+                        "join": "AND",
+                        "value": "1",
+                        "operator": "="
+                    },
+                    {
+                        "field": "statut",
+                        "join": "OR",
+                        "value": "Validé",
+                        "operator": "="
+                    }
+                ],
+                "label": "<i class=\"fa fa-trash\" aria-hidden=\"true\"><\/i> ",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.workflow.model.service.WorkflowManager;\r\nimport org.joget.commons.util.LogUtil;\r\nimport org.json.JSONArray;\r\nimport org.json.JSONObject;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\n\r\n        // Iterate over the row keys (assuming rowKeys is passed from elsewhere)\r\n        for (String key : rowKeys) {\r\n            String modifiedBy = \"#form.app_fd_inscription_ecole.modifiedBy#\";\r\n            String dateModified = \"#form.app_fd_inscription_ecole.date_action#\";\r\n            String statut = \"#form.app_fd_inscription_ecole.statut#\";\r\n            String id = \"#form.app_fd_inscription_ecole.id#\";\r\n\r\n            DataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\n            Connection con = null;\r\n            PreparedStatement stmtSelect = null;\r\n            PreparedStatement stmtInsert = null;\r\n            ResultSet rs = null;\r\n            String selectSQL = \"SELECT c_historique FROM app_fd_inscription_ecole WHERE id = ?\";\r\n            String updateSQL = \"UPDATE app_fd_inscription_ecole SET c_historique = ? WHERE id = ?\";\r\n\r\n            try {\r\n                // Create a JSON object with statut, modifiedBy, and dateModified\r\n                JSONObject newJsonObject = new JSONObject();\r\n                newJsonObject.put(\"statut\", statut);\r\n                newJsonObject.put(\"modifiedBy\", modifiedBy);\r\n                newJsonObject.put(\"dateModified\", dateModified);\r\n\r\n                con = ds.getConnection();\r\n\r\n                if (!con.isClosed()) {\r\n                    // Retrieve the existing c_historique\r\n                    stmtSelect = con.prepareStatement(selectSQL);\r\n                    stmtSelect.setString(1, id);  // Set the id for the WHERE clause\r\n                    rs = stmtSelect.executeQuery();\r\n\r\n                    JSONArray jsonArray;\r\n\r\n                    if (rs.next()) {\r\n                        String existingHistorique = rs.getString(\"c_historique\");\r\n\r\n                        // Check if c_historique exists and is not null or empty\r\n                        if (existingHistorique != null && !existingHistorique.isEmpty()) {\r\n                            // Parse the existing c_historique into a JSON array\r\n                            jsonArray = new JSONArray(existingHistorique);\r\n                        } else {\r\n                            // If no existing historique, initialize a new array\r\n                            jsonArray = new JSONArray();\r\n                        }\r\n                    } else {\r\n                        // If no record is found for the id, initialize a new array\r\n                        jsonArray = new JSONArray();\r\n                    }\r\n\r\n                    // Add the new JSON object to the array\r\n                    jsonArray.put(newJsonObject);\r\n\r\n                    // Prepare the update statement\r\n                    stmtInsert = con.prepareStatement(updateSQL);\r\n                    stmtInsert.setString(1, jsonArray.toString());  // Set the updated JSON array\r\n                    stmtInsert.setString(2, id);  // Set the id for the WHERE clause\r\n\r\n                    int rowsUpdated = stmtInsert.executeUpdate();\r\n\r\n                    if (rowsUpdated > 0) {\r\n                        LogUtil.info(\"DAO\", \"c_historique column updated successfully with appended JSON array for id: \" + id);\r\n                    }\r\n                }\r\n            } catch (SQLException e) {\r\n                LogUtil.error(\"Error updating DAO\", e, e.getMessage());\r\n            } finally {\r\n                // Close resources\r\n                try {\r\n                    if (rs != null) {\r\n                        rs.close();\r\n                    }\r\n                    if (stmtSelect != null) {\r\n                        stmtSelect.close();\r\n                    }\r\n                    if (stmtInsert != null) {\r\n                        stmtInsert.close();\r\n                    }\r\n                    if (con != null) {\r\n                        con.close();\r\n                    }\r\n                } catch (Exception ex) {\r\n                    LogUtil.error(\"DAO\", ex, ex.getMessage());\r\n                }\r\n            }\r\n\r\n            LogUtil.info(\"<+++++ Value for form +++++++++++>\", key);\r\n\r\n            // Workflow management logic\r\n            WorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\r\n            Connection con2 = null;\r\n            try {\r\n                con2 = ds.getConnection();\r\n\r\n                if (!con2.isClosed()) {\r\n                    // Use parameterized queries to avoid SQL injection\r\n                    String selectSQL = \"SELECT DISTINCT shk.ActivityProcessDefName,e.createdBy, shk.ActivityProcessId, shk.ActivityId, e.c_mail_directeur \" +\r\n                                       \"FROM jwdb.SHKAssignmentsTable AS shk \" +\r\n                                       \"JOIN jwdb.app_fd_inscription_ecole AS e ON shk.ActivityProcessId = e.c_activityprocessid \" +\r\n                                       \"WHERE e.id = ?\";\r\n                    PreparedStatement stmtSelectFolders = con2.prepareStatement(selectSQL);\r\n                    stmtSelectFolders.setString(1, key);  // Avoid SQL injection by using parameterized query\r\n                    ResultSet rs = stmtSelectFolders.executeQuery();\r\n\r\n                    while (rs.next()) {\r\n                        String c_activityprocessid = rs.getString(\"ActivityProcessId\");\r\n                        String c_processDefId = rs.getString(\"ActivityProcessDefName\");\r\n                        String c_activityId = rs.getString(\"ActivityId\");\r\n                        String createdBy = rs.getString(\"createdBy\");\r\n\r\n                        LogUtil.info(\"Processing workflow: c_activityprocessid = \" , c_activityprocessid);\r\n                        LogUtil.info(\"Processing workflow: c_processDefId = \" , c_processDefId);\r\n                        LogUtil.info(\"Processing workflow: c_activityId = \" , c_activityId);\r\n                        LogUtil.info(\"Processing workflow: createdBy = \" , createdBy);\r\n\r\n                        // Update workflow decision and force complete the assignment\r\n                        workflowManager.activityVariable(c_activityId, \"decision\", \"Annuler\");\r\n                        workflowManager.assignmentForceComplete(c_processDefId, c_activityprocessid, c_activityId, createdBy);\r\n                    }\r\n\r\n                    // Update status in the app_fd_inscription_ecole table\r\n                    String updateField = \"UPDATE app_fd_inscription_ecole SET c_steps = '2', c_statut = 'Annulé' WHERE id = ?\";\r\n                    PreparedStatement updateSql = con2.prepareStatement(updateField);\r\n                    updateSql.setString(1, key);\r\n                    updateSql.executeUpdate();\r\n                }\r\n            } catch (SQLException e) {\r\n                LogUtil.error(\"Error in assignmentForceComplete\", e, \"Cannot complete assignment\");\r\n            } finally {\r\n                // Close the second connection\r\n                try {\r\n                    if (con2 != null) {\r\n                        con2.close();\r\n                    }\r\n                } catch (SQLException e) {\r\n                    // Ignored\r\n                }\r\n            }\r\n        }\r\n\r\n",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_1",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [{
+                    "field": "statut",
+                    "join": "AND",
+                    "value": "Validé",
+                    "operator": "="
+                }],
+                "label": "Fiche étudiant",
+                "href": "generation_fiche_etud?embed=true",
+                "confirmation": "",
+                "link-css-display-type": "btn btn-sm btn-primary",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Diplôme",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "cycle",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "domaine",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Spécialité",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "specialite",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_8",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Niveau",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "niveau",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date de création",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "date_action",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_7",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Statut",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "statut",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [{
+        "hidden": "true",
+        "name": "createdBy",
+        "id": "filter_0",
+        "label": "Créé Par",
+        "type": {
+            "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+            "properties": {
+                "defaultValue": "#currentUser.username#",
+                "filterSelection": "",
+                "searchFields": ""
+            }
+        },
+        "datalist_type": "filter",
+        "filterParamName": "d-1762014-fn_createdBy"
+    }],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Liste des demandes inscriptions",
+    "id": "liste_inscription",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "demande_inscription",
+            "extraCondition": "c_statut is not 'En cours'"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

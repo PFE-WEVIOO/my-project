@@ -1,0 +1,608 @@
+{
+    "className": "org.joget.apps.userview.model.Userview",
+    "categories": [
+        {
+            "className": "org.joget.apps.userview.model.UserviewCategory",
+            "menus": [{
+                "className": "org.joget.apps.userview.lib.DataListMenu",
+                "properties": {
+                    "cacheAllLinks": "",
+                    "customHeader": "<div class=\"flash-container\"><\/div>",
+                    "permission_rules": {
+                        "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                        "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                        "8de1836b-e324-1156-b625-b4f03374f135": {},
+                        "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                        "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                    },
+                    "keyName": "",
+                    "customFooter": "<script>\r\n\r\n$(document).ready(function () {\r\n$(document).ready(function () {\r\n\r\n    function getUrlParams() {\r\n        var params = new URLSearchParams(window.location.search);\r\n        return {\r\n            msg_flash: params.get('msg'),\r\n            type_flash: params.get('flash')\r\n        };\r\n    }\r\n\r\n    function removeUrlParams() {\r\n        // Get the current URL without query parameters\r\n        var newUrl = window.location.protocol + \"//\" + window.location.host + window.location.pathname;\r\n        \r\n        // Use history.replaceState to remove the parameters from the URL without reloading the page\r\n        window.history.replaceState({ path: newUrl }, '', newUrl);\r\n    }\r\n\r\n \r\n        var params = getUrlParams();\r\n\r\n        // If msg_flash and type_flash are available, show the flash message\r\n        if (params.msg_flash && params.type_flash) {\r\n            showFlashMessage(params.type_flash, params.msg_flash);\r\n            \r\n            // Remove the parameters from the URL after using them\r\n            removeUrlParams();\r\n        }\r\n        \r\n        \r\n        \r\n\r\n    });     \r\n    });     \r\n        \r\n\r\n<\/script>\r\n",
+                    "label": "Actualités",
+                    "enableOffline": "",
+                    "customId": "welcome",
+                    "buttonPosition": "bothLeft",
+                    "datalistId": "actualite",
+                    "checkboxPosition": "no",
+                    "selectionType": "single",
+                    "userviewCacheDuration": "20",
+                    "cacheListAction": "",
+                    "userviewCacheScope": "",
+                    "rowCount": "",
+                    "id": "DA6E513B97FB4C9E9D987B8E7E28289E"
+                }
+            }],
+            "properties": {
+                "hide": "",
+                "permission_rules": {
+                    "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "5ff98d72-662e-84a8-2894-d5484f2da7f4": {
+                        "hide": "",
+                        "permissionDeny": ""
+                    },
+                    "8de1836b-e324-1156-b625-b4f03374f135": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                    "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                },
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "label": "Welcome",
+                "id": "category-FCABD71339C749649CD0D7BE55AA5828"
+            }
+        },
+        {
+            "className": "org.joget.apps.userview.model.UserviewCategory",
+            "menus": [
+                {
+                    "className": "org.joget.apps.userview.lib.RunProcess",
+                    "properties": {
+                        "runProcessDirectly": "Yes",
+                        "fieldPassoverMethod": "append",
+                        "permission_rules": {
+                            "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                            "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                            "8de1836b-e324-1156-b625-b4f03374f135": {},
+                            "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {
+                                "permissionHidden": "",
+                                "permissionDeny": ""
+                            },
+                            "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                        },
+                        "keyName": "",
+                        "label": "  Process Verification compte",
+                        "redirectTarget": "",
+                        "enableOffline": "",
+                        "afterSavedReloadTarget": "true",
+                        "customId": "verification_compte",
+                        "userviewCacheDuration": "20",
+                        "messageShowAfterComplete": "",
+                        "showInPopupDialog": "",
+                        "userviewCacheScope": "",
+                        "actionAfterSaved": "",
+                        "runProcessSubmitLabel": "",
+                        "id": "03D6955D1D164AC8FD11B3A891D84573",
+                        "processDefId": "verif_compte",
+                        "redirectUrlAfterComplete": "compte_verifier",
+                        "fieldPassover": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.HtmlPage",
+                    "properties": {
+                        "userviewCacheDuration": "20",
+                        "userviewCacheScope": "",
+                        "permission_rules": {
+                            "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                            "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                            "8de1836b-e324-1156-b625-b4f03374f135": {},
+                            "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                            "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                        },
+                        "label": "Compte vérifié",
+                        "id": "50731AD4F39B4BF092201DE7B8F9A2BA",
+                        "enableOffline": "",
+                        "customId": "compte_verifier",
+                        "content": "<style>\n#content .main-body-content {\n    border: 0px;\n    background-color: #ffffff00;\n}\n.container {\n    background-color: #ffffff;\n    padding: 40px;\n    border-radius: 10px;\n    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n    text-align: center;\n    max-width: 400px;\n    width: 100%;\n}\n.icon {\n    width: 48px; /* Adjust the size as needed */\n    height: 48px;\n    margin-bottom: 20px;\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\n.title {\n    font-size: 24px;\n    font-weight: bold;\n    color: green;\n    margin: 20px 0;\n}\n.message {\n    font-size: 16px;\n    color: #000000;\n    margin-bottom: 20px;\n}\n.button {\n    font-size: 16px;\n    padding: 10px 20px;\n    color: #ffffff;\n    background-color: #2dc26b;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    text-decoration: none;\n}\n.button:hover {\n    background-color: #28a745;\n}\n<\/style>\n<div class=\"container\"><img src=\"#appResource.lock-5-512.png#\" alt=\"Green Unlocked Lock\" class=\"icon\" width=\"89\" height=\"89\"> <!-- Image of Green Unlocked Lock -->\n<div class=\"title\">Votre compte a &eacute;t&eacute; activ&eacute; !<\/div>\n<div class=\"message\">Veuillez vous connecter<\/div>\n<a href=\"/jw/web/userview/my_project/home/_/welcome\" class=\"button\">Connexion<\/a> <!-- Green-themed connection button --><\/div>"
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.FormMenu",
+                    "properties": {
+                        "loadDataWithKey": "",
+                        "redirectUrlOnCancel": "",
+                        "actionOnCancel": "",
+                        "redirectTargetOnCancel": "top",
+                        "permission_rules": {
+                            "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                            "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                            "8de1836b-e324-1156-b625-b4f03374f135": {},
+                            "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                            "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                        },
+                        "customFooter": "",
+                        "paramName": "",
+                        "enableOffline": "",
+                        "afterSavedReloadTarget": "true",
+                        "customId": "changer_mot_de_passe_1",
+                        "showInPopupDialog": "",
+                        "readonly": "",
+                        "cancelButtonLabel": "",
+                        "actionAfterSaved": "",
+                        "showEditButton": "",
+                        "id": "C6A9ECF0F6074834AB99DF837B229739",
+                        "redirectUrlAfterComplete": "",
+                        "fieldPassover": "",
+                        "formId": "change_password",
+                        "customHeader": "<div class=\"flash-container\"><\/div>\n<script>\n\n$(document).ready(function () {\n$(document).ready(function () {\n\n    function getUrlParams() {\n        var params = new URLSearchParams(window.location.search);\n        return {\n            msg_flash: params.get('msg'),\n            type_flash: params.get('type')\n        };\n    }\n\n    function removeUrlParams() {\n        // Get the current URL without query parameters\n        var newUrl = window.location.protocol + \"//\" + window.location.host + window.location.pathname;\n        \n        // Use history.replaceState to remove the parameters from the URL without reloading the page\n        window.history.replaceState({ path: newUrl }, '', newUrl);\n    }\n\n \n        var params = getUrlParams();\n\n        // If msg_flash and type_flash are available, show the flash message\n        if (params.msg_flash && params.type_flash) {\n            showFlashMessage(params.type_flash, params.msg_flash);\n            \n            // Remove the parameters from the URL after using them\n            removeUrlParams();\n        }\n        \n        \n        \n\n    });     \n    });     \n        \n\n<\/script>\n",
+                        "fieldPassoverMethod": "append",
+                        "redirectTargetOnComplete": "",
+                        "keyName": "",
+                        "label": "Changer mot de passe 1",
+                        "userviewCacheDuration": "20",
+                        "messageShowAfterComplete": "",
+                        "submitButtonLabel": "",
+                        "userviewCacheScope": "",
+                        "readonlyLabel": "true"
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.FormMenu",
+                    "properties": {
+                        "loadDataWithKey": "",
+                        "redirectUrlOnCancel": "",
+                        "actionOnCancel": "",
+                        "redirectTargetOnCancel": "top",
+                        "permission_rules": {
+                            "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                            "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                            "8de1836b-e324-1156-b625-b4f03374f135": {},
+                            "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                            "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                        },
+                        "customFooter": "",
+                        "paramName": "",
+                        "enableOffline": "",
+                        "afterSavedReloadTarget": "true",
+                        "customId": "changer_mot_de_passe_2",
+                        "showInPopupDialog": "",
+                        "readonly": "",
+                        "cancelButtonLabel": "",
+                        "actionAfterSaved": "",
+                        "id": "C36C52A38EED4B2B153DDE6C9FE587E5",
+                        "redirectUrlAfterComplete": "",
+                        "fieldPassover": "",
+                        "formId": "change_password2",
+                        "customHeader": "<div class=\"flash-container\"><\/div>\r\n<script>\r\n\r\n$(document).ready(function () {\r\n$(document).ready(function () {\r\n\r\n    function getUrlParams() {\r\n        var params = new URLSearchParams(window.location.search);\r\n        return {\r\n            msg_flash: params.get('msg'),\r\n            type_flash: params.get('type')\r\n        };\r\n    }\r\n\r\n    function removeSpecificParams() {\r\n        var params = new URLSearchParams(window.location.search);\r\n\r\n        // Remove only the 'msg' and 'type' parameters\r\n        params.delete('msg');\r\n        params.delete('type');\r\n\r\n        // Construct the new URL without 'msg' and 'type'\r\n        var newUrl = window.location.protocol + \"//\" + window.location.host + window.location.pathname;\r\n        if (params.toString()) {\r\n            newUrl += \"?\" + params.toString();\r\n        }\r\n\r\n        // Update the browser's URL without reloading the page\r\n        window.history.replaceState({ path: newUrl }, '', newUrl);\r\n    }\r\n\r\n    var params = getUrlParams();\r\n\r\n    // If msg_flash and type_flash are available, show the flash message\r\n    if (params.msg_flash && params.type_flash) {\r\n        showFlashMessage(params.type_flash, params.msg_flash);\r\n\r\n        // Remove the specific parameters from the URL\r\n        removeSpecificParams();\r\n    }\r\n});\r\n   \r\n    });     \r\n        \r\n\r\n<\/script>\r\n",
+                        "fieldPassoverMethod": "append",
+                        "redirectTargetOnComplete": "",
+                        "keyName": "",
+                        "label": "Changer mot de passe 2",
+                        "userviewCacheDuration": "20",
+                        "messageShowAfterComplete": "",
+                        "submitButtonLabel": "",
+                        "userviewCacheScope": "",
+                        "readonlyLabel": "true"
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.FormMenu",
+                    "properties": {
+                        "loadDataWithKey": "",
+                        "redirectUrlOnCancel": "",
+                        "actionOnCancel": "",
+                        "redirectTargetOnCancel": "top",
+                        "permission_rules": {
+                            "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                            "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                            "8de1836b-e324-1156-b625-b4f03374f135": {},
+                            "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                            "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                        },
+                        "customFooter": "",
+                        "paramName": "",
+                        "enableOffline": "",
+                        "afterSavedReloadTarget": "true",
+                        "customId": "changer_mot_de_passe_3",
+                        "showInPopupDialog": "",
+                        "readonly": "",
+                        "cancelButtonLabel": "",
+                        "actionAfterSaved": "",
+                        "id": "88F5B21118C24C8749224565BA2CCBCA",
+                        "redirectUrlAfterComplete": "/jw/web/userview/my_project/inscription/_/welcome?flash=success&msg=Votre%20mot%20de%20passe%20a%20%C3%A9t%C3%A9%20modifi%C3%A9%20avec%20succ%C3%A8s.%20Vous%20pouvez%20d%C3%A9sormais%20vous%20connecter.",
+                        "fieldPassover": "",
+                        "formId": "change_password3",
+                        "customHeader": "<div class=\"flash-container\"><\/div>\r\n<script>\r\n\r\n$(document).ready(function () {\r\n$(document).ready(function () {\r\n\r\n    function getUrlParams() {\r\n        var params = new URLSearchParams(window.location.search);\r\n        return {\r\n            msg_flash: params.get('msg'),\r\n            type_flash: params.get('type')\r\n        };\r\n    }\r\n\r\n    function removeSpecificParams() {\r\n        var params = new URLSearchParams(window.location.search);\r\n\r\n        // Remove only the 'msg' and 'type' parameters\r\n        params.delete('msg');\r\n        params.delete('type');\r\n\r\n        // Construct the new URL without 'msg' and 'type'\r\n        var newUrl = window.location.protocol + \"//\" + window.location.host + window.location.pathname;\r\n        if (params.toString()) {\r\n            newUrl += \"?\" + params.toString();\r\n        }\r\n\r\n        // Update the browser's URL without reloading the page\r\n        window.history.replaceState({ path: newUrl }, '', newUrl);\r\n    }\r\n\r\n    var params = getUrlParams();\r\n\r\n    // If msg_flash and type_flash are available, show the flash message\r\n    if (params.msg_flash && params.type_flash) {\r\n        showFlashMessage(params.type_flash, params.msg_flash);\r\n\r\n        // Remove the specific parameters from the URL\r\n        removeSpecificParams();\r\n    }\r\n});\r\n   \r\n    });     \r\n        \r\n\r\n<\/script>\r\n",
+                        "fieldPassoverMethod": "append",
+                        "redirectTargetOnComplete": "",
+                        "keyName": "",
+                        "label": "Changer mot de passe 3",
+                        "userviewCacheDuration": "20",
+                        "messageShowAfterComplete": "",
+                        "submitButtonLabel": "",
+                        "userviewCacheScope": "",
+                        "readonlyLabel": "true"
+                    }
+                }
+            ],
+            "properties": {
+                "hide": "yes",
+                "permission_rules": {
+                    "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "5ff98d72-662e-84a8-2894-d5484f2da7f4": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "8de1836b-e324-1156-b625-b4f03374f135": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {
+                        "hide": "yes",
+                        "permissionDeny": ""
+                    },
+                    "3492bdb1-d6ff-467d-f13e-738f15790997": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    }
+                },
+                "permission": {
+                    "className": "",
+                    "properties": {}
+                },
+                "comment": "",
+                "label": "Hidden forms",
+                "id": "category-F7E0B5FE353F4050ED0B37DF60997C52"
+            }
+        },
+        {
+            "className": "org.joget.apps.userview.model.UserviewCategory",
+            "menus": [{
+                "className": "org.joget.apps.userview.lib.HtmlPage",
+                "properties": {
+                    "userviewCacheDuration": "20",
+                    "userviewCacheScope": "",
+                    "permission_rules": {
+                        "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                        "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                        "8de1836b-e324-1156-b625-b4f03374f135": {},
+                        "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                        "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                    },
+                    "label": "Bienvenue",
+                    "id": "9147965A452D441BC6EC375740448BA1",
+                    "enableOffline": "",
+                    "customId": "",
+                    "content": "<style>\n#content .main-body-content {\n    border: 0px;\n    background-color: #ffffff00;\n}\n.container {\n    background-color: #ffffff;\n    padding: 40px;\n    border-radius: 10px;\n    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n    text-align: center;\n    max-width: 400px;\n    width: 100%;\n}\n.icon {\n    width: 48px; /* Adjust the size as needed */\n    height: 48px;\n    margin-bottom: 20px;\n}\n.title {\n    font-size: 24px;\n    font-weight: bold;\n    color: #FF0000;\n    margin: 20px 0;\n}\n.message {\n    font-size: 16px;\n    color: #5a5a5a;\n    margin-bottom: 20px;\n}\n<\/style>\n<div class=\"container\"><img src=\"#appResource.lock-4-512.png#\" alt=\"Red Locked Lock\" class=\"icon\"> <!-- Image of Red Locked Lock -->\n<div class=\"title\">Votre compte n'est pas encore activ&eacute;<\/div>\n<div class=\"message\">Nous vous avons envoy&eacute; un E-mail vous permettant d'activer votre compte. Veuillez consulter votre bo&icirc;te de messagerie et cliquez sur le lien de confirmation.<\/div>\n<\/div>"
+                }
+            }],
+            "properties": {
+                "hide": "",
+                "permission_rules": {
+                    "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                    "5ff98d72-662e-84a8-2894-d5484f2da7f4": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "8de1836b-e324-1156-b625-b4f03374f135": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "3492bdb1-d6ff-467d-f13e-738f15790997": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    }
+                },
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "education",
+                        "allowedGroupIds": ""
+                    }
+                },
+                "comment": "",
+                "label": "Pas encore verifier",
+                "id": "category-05C55C1B2DCE4CFB56CB124E6BE253E4"
+            }
+        },
+        {
+            "className": "org.joget.apps.userview.model.UserviewCategory",
+            "menus": [{
+                "className": "org.joget.apps.userview.lib.FormMenu",
+                "properties": {
+                    "loadDataWithKey": "",
+                    "redirectUrlOnCancel": "",
+                    "actionOnCancel": "",
+                    "redirectTargetOnCancel": "top",
+                    "permission_rules": {
+                        "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {},
+                        "5ff98d72-662e-84a8-2894-d5484f2da7f4": {},
+                        "8de1836b-e324-1156-b625-b4f03374f135": {},
+                        "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {},
+                        "3492bdb1-d6ff-467d-f13e-738f15790997": {}
+                    },
+                    "customFooter": "",
+                    "paramName": "",
+                    "enableOffline": "",
+                    "afterSavedReloadTarget": "true",
+                    "customId": "inscription",
+                    "showInPopupDialog": "Yes",
+                    "readonly": "",
+                    "cancelButtonLabel": "",
+                    "actionAfterSaved": "",
+                    "id": "1A86FD68358A46A67D2B46E49B0B5024",
+                    "redirectUrlAfterComplete": "/jw/web/userview/my_project/inscription/_/welcome?flash=success&msg=Félicitations, votre compte a été créé. Veuillez consulter votre email pour continuer la procédure.",
+                    "fieldPassover": "",
+                    "formId": "inscription_etud",
+                    "customHeader": "",
+                    "fieldPassoverMethod": "append",
+                    "redirectTargetOnComplete": "parent",
+                    "keyName": "",
+                    "label": "Inscription",
+                    "userviewCacheDuration": "20",
+                    "messageShowAfterComplete": "",
+                    "submitButtonLabel": "",
+                    "userviewCacheScope": "",
+                    "readonlyLabel": "true"
+                }
+            }],
+            "properties": {
+                "hide": "yes",
+                "permission_rules": {
+                    "853d0ea1-84c2-b029-c8d6-80cbc86f4f82": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "5ff98d72-662e-84a8-2894-d5484f2da7f4": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "8de1836b-e324-1156-b625-b4f03374f135": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "f631cea9-4185-e1e3-d49a-dd588f7ee7cb": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    },
+                    "3492bdb1-d6ff-467d-f13e-738f15790997": {
+                        "hide": "",
+                        "permissionDeny": "true"
+                    }
+                },
+                "comment": "",
+                "permission": {
+                    "className": "org.joget.plugin.enterprise.AnonymousUserviewPermission",
+                    "properties": {}
+                },
+                "id": "category-CB52FE21C5EE44FC35A4BDB7A4DCDF53",
+                "label": "Home"
+            }
+        }
+    ],
+    "properties": {
+        "logoutText": "Logout",
+        "welcomeMessage": "Plateforme de gestion des établissements privés de l'enseignement supérieur",
+        "name": "",
+        "description": "",
+        "footerMessage": "#i18n.Powered by Wevioo#",
+        "id": "inscription"
+    },
+    "setting": {"properties": {
+        "__": "",
+        "userviewDescription": "",
+        "userviewId": "inscription",
+        "hideThisUserviewInAppCenter": "true",
+        "permission_rules": [
+            {
+                "permission_key": "8de1836b-e324-1156-b625-b4f03374f135",
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "",
+                        "allowedGroupIds": "first_login_ministre"
+                    }
+                },
+                "permission_name": "first_login_ministre"
+            },
+            {
+                "permission_key": "3492bdb1-d6ff-467d-f13e-738f15790997",
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "education",
+                        "allowedGroupIds": "mise_a_jour_profil"
+                    }
+                },
+                "permission_name": "Mise a jour de profile"
+            },
+            {
+                "permission_key": "5ff98d72-662e-84a8-2894-d5484f2da7f4",
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "education",
+                        "allowedGroupIds": "first_login_etab"
+                    }
+                },
+                "permission_name": "first_login_etab"
+            },
+            {
+                "permission_key": "f631cea9-4185-e1e3-d49a-dd588f7ee7cb",
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "education",
+                        "allowedGroupIds": "second_user"
+                    }
+                },
+                "permission_name": "second_user"
+            },
+            {
+                "permission_key": "853d0ea1-84c2-b029-c8d6-80cbc86f4f82",
+                "permission": {
+                    "className": "org.joget.apps.userview.lib.GroupPermission",
+                    "properties": {
+                        "orgId": "education",
+                        "allowedGroupIds": "first_login"
+                    }
+                },
+                "permission_name": "first_user"
+            }
+        ],
+        "userview_thumbnail": "#appResource.LOGO_MESRS_(1).png#",
+        "userview_category": "",
+        "permission": {
+            "className": "",
+            "properties": {}
+        },
+        "theme": {
+            "className": "org.melkart.plugin.MaterialTheme",
+            "properties": {
+                "customPrimaryLight": "#B30000",
+                "css": "#my-superset-container iframe {\r\n  border: none !important;\r\n  outline: none !important;\r\n}\r\n.form-section-title {\r\n  display: none !important;\r\n}\r\n\r\n\r\n\r\n.dz-message {\r\n    color: red!important;\r\n    font-weight: bold!important;\r\n}\r\n/* Apply a global font style */\r\nbody {\r\n    font-family: 'Arial', Arial, sans-serif !important; /* Use Arial Black */\r\n    font-size: 11px !important; /* Set font size to 11px */\r\n}\r\n\r\n/* Specific header styling for all tables within a table-wrapper */\r\n.table-wrapper table thead tr th {\r\n    background-color: black\t\t !important; /* Dark background */\r\n    color: #ffffff !important; /* White text */\r\n}\r\n\r\n/* Optional: Hover effect for the header */\r\n.table-wrapper table thead tr th:hover {\r\n    background-color: grey\t !important;\r\n}\r\n\r\n.runProcess-body-header {\r\n  display: none;\r\n}\r\n\r\n\r\n/*flash message*/\r\n.flash-container {\r\n    position: fixed;\r\n    top: 75px;\r\n    right: 15px;\r\n    z-index: 1000;\r\n    max-width: 25%;\r\n}\r\n\r\n.flash-container .flash-message {\r\n    position: relative;\r\n    opacity: 0;\r\n    font-weight: bold;\r\n    font-size:20px;\r\n    margin: 0 auto;\r\n    min-height: 28px;\r\n    -webkit-transform: translateX(-20px);\r\n    -ms-transform: translateX(-20px);\r\n    transform: translateX(-20px);\r\n    -webkit-transition: all .5s;\r\n    -o-transition: all .5s;\r\n    transition: all .5s;\r\n    background-color: #fff;\r\n    color: #2c3433;\r\n    -webkit-border-radius: 0;\r\n    border-radius: 0;\r\n    -webkit-border-top-right-radius: 4px;\r\n    border-top-right-radius: 4px;\r\n    -webkit-border-bottom-right-radius: 4px;\r\n    border-bottom-right-radius: 4px;\r\n    margin-bottom: 10px;\r\n    padding: 5px 35px 5px 20px;\r\n    -webkit-box-shadow: 2px 2px 33px 8px rgba(0, 0, 0, .1);\r\n    box-shadow: 2px 2px 33px 8px rgba(0, 0, 0, .1);\r\n    line-height: 1.4;\r\n    cursor: pointer\r\n}\r\n\r\n.flash-container .flash-message .flash-progress {\r\n    position: absolute;\r\n    right: 0;\r\n    top: auto;\r\n    bottom: 0;\r\n    left: 0;\r\n    width: 0;\r\n    height: 5px;\r\n    opacity: 1;\r\n    background-color: rgba(0, 0, 0, .15);\r\n    -webkit-transition: opacity .1s;\r\n    -o-transition: opacity .1s;\r\n    transition: opacity .1s\r\n}\r\n\r\n.flash-container .flash-message .flash-progress.is-hidden {\r\n    opacity: 0\r\n}\r\n\r\n.flash-container .flash-message .flash-progress.flash-progress-top {\r\n    top: 0;\r\n    bottom: auto\r\n}\r\n\r\n.flash-container .flash-message:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    width: 7px;\r\n    height: 100%;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: -7px;\r\n    background-color: transparent;\r\n    -webkit-border-top-left-radius: 4px;\r\n    border-top-left-radius: 4px;\r\n    -webkit-border-bottom-left-radius: 4px;\r\n    border-bottom-left-radius: 4px\r\n    \r\n}\r\n\r\n.flash-container .flash-message:after {\r\n    position: absolute;\r\n    content: \"\";\r\n    font-family: fontAwesome;\r\n    top: 5px;\r\n    right: 8px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    color: #9e9e9e\r\n}\r\n\r\n.flash-container .flash-message.is-visible {\r\n    opacity: 1;\r\n    -webkit-transform: translateX(0);\r\n    -ms-transform: translateX(0);\r\n    transform: translateX(0)\r\n}\r\n\r\n.flash-container .flash-message.flash-success .flash-progress {\r\n    background-color: rgba(76, 175, 80, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-success:before {\r\n    background-color: #4caf50\r\n}\r\n\r\n.flash-container .flash-message.flash-success:after {\r\n    color: rgba(76, 175, 80, .5);\r\n    content: \"\\F058\"\r\n}\r\n\r\n.flash-container .flash-message.flash-warning .flash-progress {\r\n    background-color: rgba(255, 133, 27, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-warning:before {\r\n    background-color: #ff851b\r\n}\r\n\r\n.flash-container .flash-message.flash-warning:after {\r\n    color: rgba(255, 133, 27, .5);\r\n    content: \"\\F071\"\r\n}\r\n\r\n.flash-container .flash-message.flash-danger .flash-progress,\r\n.flash-container .flash-message.flash-error .flash-progress {\r\n    background-color: rgba(255, 65, 54, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-danger:before,\r\n.flash-container .flash-message.flash-error:before {\r\n    background-color: #ff4136\r\n}\r\n\r\n.flash-container .flash-message.flash-danger:after,\r\n.flash-container .flash-message.flash-error:after {\r\n    color: rgba(255, 65, 54, .5);\r\n    content: \"\\F06A\"\r\n}\r\n\r\n.flash-container .flash-message.flash-info .flash-progress {\r\n    background-color: rgba(0, 116, 217, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-info:before {\r\n    background-color: #0074d9\r\n}\r\n\r\n.flash-container .flash-message.flash-info:after {\r\n    color: rgba(0, 116, 217, .5);\r\n    content: \"\\F05A\"\r\n}\r\n\r\n.flash-container .flash-message.flash-bug .flash-progress {\r\n    background-color: rgba(138, 43, 226, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-bug:before {\r\n    background-color: #8a2be2\r\n}\r\n\r\n.flash-container .flash-message.flash-bug:after {\r\n    color: rgba(138, 43, 226, .5);\r\n    content: \"\\F188\"\r\n}\r\n\r\n.flash-container .flash-message.flash-disabled .flash-progress {\r\n    background-color: hsla(0, 0%, 67%, .15)\r\n}\r\n\r\n.flash-container .flash-message.flash-disabled:before {\r\n    background-color: #aaa\r\n}\r\n\r\n.flash-container .flash-message.flash-disabled:after {\r\n    color: hsla(0, 0%, 67%, .5);\r\n    content: \"\\F05E\"\r\n}\r\n\r\n.flash-container .flash-message.flash-default {\r\n    padding-right: 20px\r\n}\r\n\r\n@media (max-width:1280px) {\r\n    .flash-container {\r\n        max-width: 33.334%\r\n    }\r\n}\r\n\r\n@media (max-width:768px) {\r\n    .flash-container {\r\n        max-width: 50%\r\n    }\r\n}\r\n\r\n@media (max-width:480px) {\r\n    .flash-container {\r\n        right: 10px;\r\n        left: 10px;\r\n        max-width: 100%\r\n    }\r\n}\r\n\r\n.flash-container .flash-message.dark-theme {\r\n    background-color: #2c3433;\r\n    color: #fff\r\n}\r\n\r\n.flash-container .flash-message.dark-theme .flash-progress {\r\n    background-color: hsla(0, 0%, 100%, .5)\r\n}\r\n/*flash end*/",
+                "usermenu-style-font-family": "Tahoma, Geneva, sans-serif",
+                "inboxCustomUrl": "",
+                "forgotPasswordText": "Mot de passe oublié?",
+                "welcome-message-style-color": "#000000",
+                "disableHelpGuide": "true",
+                "header-style-font-weight": "500",
+                "datalistStyle": "",
+                "loginPageType": "illustration",
+                "signupUrl": "/jw/web/userview/my_project/home/_/inscription",
+                "mobileViewDisabled": "",
+                "horizontal_menu": "",
+                "profile": "",
+                "homeAttractBanner": "",
+                "homeUrl": "",
+                "dx8linkActiveColor": "#69B1FF",
+                "dx8footerColor": "rgba(0, 0, 0, 0.88)",
+                "subheader": "",
+                "sidebarType": "vertical",
+                "dx8contentbackground": "#FFFFFF",
+                "loginPageBottom": "",
+                "welcome-message-style-font-family": "Arial, Helvetica, sans-serif",
+                "mergeNoLabeledSection": "true",
+                "dx8navBadgeText": "#FFFFFF",
+                "sidebar-style-font-size": "12px",
+                "formMessageToastPosition": "bottom-end",
+                "dx8background": "#F0F2F5",
+                "brand-logo-style-margin-bottom": "50px",
+                "header-style-font-family": "'Arial Black', Gadget, sans-serif",
+                "js": "// =======================================\r\n// 💬 Flash Message Function (Reusable)\r\nfunction showFlashMessage(type, message, duration = 8000) {\r\n    const flashMessage = document.createElement(\"div\");\r\n    flashMessage.className = `flash-message flash-${type}`;\r\n    flashMessage.innerHTML = `\r\n        ${message}\r\n        <div class=\"flash-progress\"><\/div>\r\n    `;\r\n\r\n    document.querySelector(\".flash-container\").appendChild(flashMessage);\r\n\r\n    setTimeout(() => {\r\n        flashMessage.classList.add(\"is-visible\");\r\n        flashMessage.querySelector(\".flash-progress\").style.width = \"100%\";\r\n    }, 100);\r\n\r\n    setTimeout(() => {\r\n        flashMessage.classList.remove(\"is-visible\");\r\n        flashMessage.querySelector(\".flash-progress\").style.width = \"0\";\r\n        setTimeout(() => {\r\n            flashMessage.remove();\r\n        }, 500);\r\n    }, duration);\r\n}\r\n\r\n(function () {\r\n    const currentUrl = window.location.href;\r\n\r\nconst shouldRedirect = [\r\n    /_ja_inbox$/, \r\n    /action=assignmentSubmit/          \r\n\r\n].some(regex => regex.test(currentUrl));\r\n\r\n    const redirectUrl = localStorage.getItem(\"redirectUrl\");\r\n\r\n    if (shouldRedirect && redirectUrl) {\r\n        // You can attach a flash message to the redirect URL if needed\r\n        const msg = getUrlParam(\"msg\");\r\n        const type = getUrlParam(\"type\");\r\n\r\n        const url = new URL(redirectUrl);\r\n        if (msg && type) {\r\n            url.searchParams.set(\"msg\", msg);\r\n            url.searchParams.set(\"type\", type);\r\n        }\r\n\r\n        localStorage.removeItem(\"redirectUrl\");\r\n        window.location.href = url.toString(); // 🔁 Perform redirect with params\r\n        return; // Stop further execution\r\n    }\r\n\r\n    function getUrlParam(name) {\r\n        return new URLSearchParams(window.location.search).get(name);\r\n    }\r\n})();\r\n// =======================================\r\n// 🔔 Notification Badge Handler\r\n// =======================================\r\n\r\nfunction dlPostActionDelete() {\r\n  Swal.fire({\r\n    title: \"Vous avez une notification, merci de consulter votre boite.\",\r\n    icon: 'info',\r\n    showCancelButton: false,\r\n    showConfirmButton: false,\r\n    allowOutsideClick: true,\r\n    didOpen: () => {\r\n      const popup = document.querySelector('.swal2-popup');\r\n      popup.style.position = 'fixed';\r\n      popup.style.top = '20px';\r\n      popup.style.left = '50%';\r\n      popup.style.transform = 'translateX(-50%)';\r\n      popup.style.width = '300px';\r\n      popup.style.borderRadius = '8px';\r\n      popup.style.fontSize = '14px';\r\n    }\r\n  });\r\n}\r\n\r\n$(document).ready(function () {\r\n  console.log(\"✅ Script loaded\");\r\n\r\n  // Prevent execution multiple times in the same session\r\n  if (sessionStorage.getItem(\"notificationBadgeHandled\")) {\r\n    console.log(\"⚠️ Notification already handled this session.\");\r\n    return;\r\n  }\r\n\r\n  // Poll until badge appears in DOM\r\n  const checkBadge = setInterval(function () {\r\n    const badge = document.querySelector('.notification-badge');\r\n\r\n    if (badge) {\r\n      const value = parseInt(badge.textContent.trim());\r\n      console.log(\"🔔 Badge found with value:\", value);\r\n\r\n      if (value > 0) {\r\n        console.log(\"🚀 Triggering notification popup\");\r\n        dlPostActionDelete();\r\n      } else {\r\n        console.log(\"ℹ️ Badge exists but value is 0\");\r\n      }\r\n\r\n      // Mark as handled (you can conditionally store this only if value > 0)\r\n      sessionStorage.setItem(\"notificationBadgeHandled\", \"true\");\r\n      clearInterval(checkBadge);\r\n    } else {\r\n      console.log(\"⏳ Waiting for .notification-badge...\");\r\n    }\r\n  }, 300);\r\n});\r\n\r\n// =======================================\r\n// 🎓 Change Login Background for Student\r\n// =======================================\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", function () {\r\n  if (window.location.pathname === \"/jw/web/login\") {\r\n    const params = new URLSearchParams(window.location.search);\r\n    const type = params.get(\"type\");\r\n\r\n    if (type === \"student\") {\r\n      const targetDiv = document.querySelector(\"div.position-relative.h-100.m-3.px-7.border-radius-lg.d-flex.flex-column.justify-content-center\");\r\n      if (targetDiv) {\r\n        targetDiv.style.backgroundImage = \"url('/jw/web/app/my_project/resources/rut-miit-oTglG1D4hRA-unsplash.jpg')\";\r\n      }\r\n\r\n      // Optional: remove ?type=student from URL without reload\r\n      window.history.replaceState({}, document.title, window.location.pathname);\r\n    }\r\n  }\r\n});\r\n\r\n// =======================================\r\n// 👤 Add Department Info in Profile Dropdown\r\n// =======================================\r\n\r\n\r\n\r\n// =======================================\r\n// 👤 log out redirection\r\n// =======================================\r\n\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", function () {\r\n    document.querySelector('.nav-link[href=\"/jw/web/login\"]').setAttribute('href', 'https://tw4cc4g404wgowwcgw80kogo.137.74.193.171.sslip.io/');\r\n  // Store login URL on every visit to the login page, unless logging out\r\n  if (window.location.pathname === \"/jw/web/login\" && localStorage.getItem(\"isLoggingOut\") !== \"true\") {\r\n    let loginUrl = \"/jw/web/login\";\r\n    const params = new URLSearchParams(window.location.search);\r\n    if (params.toString()) {\r\n      loginUrl += `?${params.toString()}`;\r\n    }\r\n    try {\r\n      localStorage.setItem(\"loginUrl\", loginUrl);\r\n    } catch (error) {\r\n      console.warn(\"localStorage is not available:\", error);\r\n    }\r\n  }\r\n\r\n  // Handle logout link click\r\n  const logoutLink = document.querySelector('a[href=\"/jw/j_spring_security_logout\"]');\r\n  if (logoutLink) {\r\n    logoutLink.addEventListener(\"click\", function (e) {\r\n      e.preventDefault();\r\n      try {\r\n        // Set logout flag\r\n        localStorage.setItem(\"isLoggingOut\", \"true\");\r\n      } catch (error) {\r\n        console.warn(\"localStorage is not available:\", error);\r\n      }\r\n      // Trigger logout\r\n      window.location.href = \"/jw/j_spring_security_logout\";\r\n    });\r\n  }\r\n\r\n  // After logout, check redirect condition\r\n  if (window.location.pathname === \"/jw/web/login\" && localStorage.getItem(\"isLoggingOut\") === \"true\") {\r\n    let storedLoginUrl;\r\n    try {\r\n      storedLoginUrl = localStorage.getItem(\"loginUrl\");\r\n    } catch (error) {\r\n      console.warn(\"Unable to access localStorage:\", error);\r\n    }\r\n\r\n    // Normalize URLs for comparison\r\n    const currentFullPath = (window.location.pathname + (window.location.search || \"\")).replace(/\\/$/, \"\");\r\n    const normalizedStoredUrl = storedLoginUrl ? storedLoginUrl.replace(/\\/$/, \"\") : null;\r\n\r\n\r\n\r\n    // Clear logout flag and login URL\r\n    try {\r\n      localStorage.removeItem(\"isLoggingOut\");\r\n      localStorage.removeItem(\"loginUrl\");\r\n    } catch (error) {\r\n      console.warn(\"Unable to clear localStorage:\", error);\r\n    }\r\n\r\n    // Redirect if stored URL exists and differs from current URL\r\n    if (normalizedStoredUrl && normalizedStoredUrl !== currentFullPath) {\r\n      setTimeout(function () {\r\n        window.location.href = normalizedStoredUrl;\r\n      }, 0);\r\n    } else {\r\n      console.log(\"No redirect needed\");\r\n    }\r\n  }\r\n});\r\n\r\n",
+                "compactTheme": "",
+                "useSweetAlertConfirmation": "true",
+                "welcome-message-style-font-weight": "700",
+                "sidebar-style-font-weight": "500",
+                "dx8navScrollbarThumb": "#C4C4C4",
+                "loginPageTop": "",
+                "urlsToCache": "",
+                "brand-logo-style-background-color": "#FFFFFF",
+                "userImage": "",
+                "brand-logo-style-width": "250px",
+                "addChosenSelect": "true",
+                "fontControl": "",
+                "dx8navActiveLinkBackground": "#449CFA",
+                "dx8navLinkBackground": "#FFFFFF",
+                "loginLogoImage": "#appResource.Ministere-de-lenseignement-supérieur.png#",
+                "showCurrentPageIconInNavbar": "true",
+                "loadingBgColor": "",
+                "usermenu-style-font-weight": "600",
+                "showFormMessages": "true",
+                "formSuccessMessage": "Formulaire Soumis",
+                "mobileCacheEnabled": "",
+                "dx8footerBackground": "#F0F2F5",
+                "brand-name-style-display": "none",
+                "dx8headingFontColor": "rgba(0, 0, 0, 0.88)",
+                "inbox": "current",
+                "dx8navBadge": "#1677FF",
+                "breadcrumb-style-display": "none",
+                "footer-style-display": "none",
+                "loginBackground": "",
+                "disablePush": "",
+                "dx8navLinkColor": "rgba(9, 9, 9, 0.88)",
+                "themeDirection": "ltr",
+                "loadingImageSize": "25px",
+                "removeAssignmentTitle": "",
+                "header-style-font-size": "15px",
+                "navbarWithBg": "true",
+                "formErrorMessage": "Erreur de validation",
+                "loadingImage": "#appResource.1_9EBHIOzhE1XfMYoKz1JcsQ.gif#",
+                "brand-logo-style-margin-left": "100px",
+                "shortcutLinkLabel": "Raccourci",
+                "logo": "#appResource.Ministere-de-lenseignement-supérieur.png#",
+                "enableResponsiveSwitch": "true",
+                "formMessageToastDuration": "3000",
+                "dx8headerFontColor": "#000000",
+                "switchStyle": "",
+                "fav_icon": "#appResource.logo_mesrs_fr_(1).png#",
+                "dx8navLinkIcon": "rgba(81, 133, 206, 0.88)",
+                "loadingText": "Loading",
+                "brand-logo-style-margin-top": "5px",
+                "hideSidebar": "",
+                "hideNavbar": "",
+                "dx8headingBgColor": "#FFFFFF",
+                "dx8linkColor": "#1677FF",
+                "customPrimary": "#B30000",
+                "hideDatalistExports": "",
+                "disablePwa": "",
+                "brand-logo-style-max-height": "300px",
+                "dx8backgroundImage": "",
+                "showToggleSchemeButton": "",
+                "sidebar-style-font-family": "Arial, Helvetica, sans-serif",
+                "loadingType": "image",
+                "themeScheme": "light",
+                "brand-logo-style-max-width": "300px",
+                "dx8colorSchema": "#f1f1f1;#FFFFFF;#8D9BCA;#1EA0CB;#253037;#19242b",
+                "dx8navScrollbarTrack": "",
+                "dx8headerColor": "#FFFFFF",
+                "loginFormImage": "#appResource.Tunisie_Ministère_Enseignement_Supérieureedit.jpg#",
+                "dx8colorScheme": "rgb(249, 250, 251);rgb(59, 67, 72);rgb(3, 169, 244);rgb(110, 206, 251);rgb(255, 255, 255);rgb(255, 255, 255)",
+                "dx8navBackground": "#FFFFFF",
+                "displayCategoryLabel": "true",
+                "customImports": "",
+                "header-style-letter-spacing": "1px",
+                "usermenu-style-color": "#003074",
+                "dx8navActiveIconColor": "#91BCFF",
+                "userMenu": [],
+                "dx8buttonColor": "#FFFFFF",
+                "shortcut": [],
+                "sidebar-style-color": "#2C4466",
+                "showGlobalSearchbar": "",
+                "sidebarTheme": "bg-white",
+                "dx8fontColor": "rgba(0, 0, 0, 0.88)",
+                "navbarFixed": "",
+                "showFormMessageAsToast": "true",
+                "signupText": "S'inscrire",
+                "brand-logo-style-margin-right": "50px",
+                "welcome-message-style-font-size": "18px",
+                "customPrimaryDark": "#FFFFFF",
+                "dx8buttonBackground": "#1677FF",
+                "dx8contentFontColor": "rgba(0, 0, 0, 0.88)",
+                "forgotPasswordUrl": "/jw/web/userview/my_project/home/_/changer_mot_de_passe_1",
+                "subfooter": "",
+                "userImageUrlHash": "#request.baseURL#/web/client/app/#envVariable.appId#/form/download/photo_profile/#currentUser.username#/#form.user_profile.photo_de_profile[{currentUser.username}]#.",
+                "brand-logo-style-height": "100px",
+                "dx8primaryColor": "#1677FF",
+                "darkMode": "",
+                "dx8navActiveLinkColor": "#0B0C0C",
+                "header-style-color": "#003074"
+            }
+        },
+        "userviewName": "Inscription"
+    }}
+}

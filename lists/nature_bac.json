@@ -1,0 +1,116 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-edit\"><\/i> ",
+                "href": "nature_de_bac?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.apps.datalist.lib.FormRowDeleteDataListAction",
+            "id": "rowAction_1",
+            "properties": {
+                "deleteFiles": "",
+                "deleteGridData": "",
+                "formDefId": "nature_bac",
+                "deleteSubformData": "",
+                "rules": [],
+                "label": "<i class=\"far fa-trash-alt\"><\/i> ",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "abortRelatedRunningProcesses": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Nature de baccalauréat",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "nature_de_bac",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.sql.DataSource;\r\nimport org.joget.apps.app.service.AppUtil;\r\nimport org.joget.commons.util.LogUtil;\r\n\r\n\r\n        DataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\r\n        String result = \"<span>False<\/span>\";\r\n        \r\n        try  {\r\n            Connection con = ds.getConnection();\r\n            // First query: Check count in app_fd_matrice_corres\r\n            String selectSql1 = \"SELECT COUNT(*) FROM app_fd_matrice_corres WHERE c_nature_bac LIKE ?\";\r\n          \r\n                PreparedStatement stmt1 = con.prepareStatement(selectSql1);\r\n                stmt1.setString(1, \"%\" + value + \"%\");\r\n                \r\n                    ResultSet rs1 = stmt1.executeQuery();\r\n                    rs1.next();\r\n                    int count1 = rs1.getInt(1);\r\n                    \r\n                    // Second query: Check count in app_fd_inscription_etud\r\n                    String selectSql2 = \"SELECT COUNT(*) FROM app_fd_inscription_etud WHERE c_nature_bac LIKE ?\";\r\n                    PreparedStatement stmt2 = con.prepareStatement(selectSql2);\r\n                        stmt2.setString(1, value);\r\n                        \r\n                            ResultSet rs2 = stmt2.executeQuery();\r\n                            rs2.next();\r\n                            int count2 = rs2.getInt(1);\r\n                            \r\n                            // Return True only if both counts are 0\r\n                            if (count1 == 0 && count2 == 0) {\r\n                                result = \"<span>True<\/span>\";\r\n                            }\r\n                        \r\n                    \r\n                \r\n            \r\n        } catch (SQLException e) {\r\n            LogUtil.error(DatabaseCheck.class.getName(), e, \"Error executing database query: \" + e.getMessage());\r\n        }\r\n        \r\n        return result;\r\n    \r\n"}
+            },
+            "label": "Nature de bac",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "nature_de_bac",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Nature de bac",
+    "id": "nature_bac",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "nature_bac",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter",
+            "href": "nature_de_bac?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

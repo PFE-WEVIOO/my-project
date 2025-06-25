@@ -1,0 +1,233 @@
+{
+    "elements": [{
+        "elements": [{
+            "elements": [
+                {
+                    "elements": [
+                        {
+                            "elements": [],
+                            "className": "org.joget.apps.userview.lib.component.ContainerComponent",
+                            "properties": {
+                                "attr-data-events-listening": [],
+                                "style-mobile-margin-top": "15px",
+                                "style-margin-top": "30px",
+                                "style-text-align": "center",
+                                "style-margin-bottom": "20px",
+                                "permission_rules": {
+                                    "F6E97C06864E4F62843B259A8C9AB1AD": {"hidden": "true"},
+                                    "58F9FBEA76264BE037991759BC1645A2": {}
+                                },
+                                "style-color": "#FFFFFF",
+                                "style-mobile-margin-bottom": "15px",
+                                "style-font-size": "13px",
+                                "attr-data-events-triggering": [],
+                                "id": "8358CCF066424B1AF09EBF61A96EAFC5",
+                                "customId": "assignment_msg"
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.userview.lib.component.HeadingComponent",
+                            "properties": {
+                                "attr-data-events-listening": [],
+                                "style-position": "absolute",
+                                "permission_rules": {
+                                    "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                                    "58F9FBEA76264BE037991759BC1645A2": {}
+                                },
+                                "style-color": "#FFFFFF",
+                                "style-line-height": "40px",
+                                "style-font-size": "20px",
+                                "textContent": " ",
+                                "attr-data-events-triggering": [],
+                                "tagName": "h3",
+                                "customId": "clock",
+                                "style-top": "35px",
+                                "style-margin-top": "0px",
+                                "style-right": "15px",
+                                "style-text-align": "left",
+                                "style-margin-bottom": "0px",
+                                "id": "E92400A7CBAD40DC6E28B620D44D34D6"
+                            }
+                        },
+                        {
+                            "elements": [
+                                {
+                                    "className": "org.joget.apps.userview.lib.component.ButtonComponent",
+                                    "properties": {
+                                        "attr-data-events-listening": [],
+                                        "style-font-weight": "500",
+                                        "css-display-type": "btn btn-light",
+                                        "permission_rules": {
+                                            "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                                            "58F9FBEA76264BE037991759BC1645A2": {}
+                                        },
+                                        "style-color": "#7E8299",
+                                        "style-margin-right": "10px",
+                                        "attr-onclick": "appCreate();return false;",
+                                        "textContent": "#i18n.Design New App#",
+                                        "attr-data-events-triggering": [],
+                                        "attr-href": "#",
+                                        "id": "8EFC9D21190A4BFBE31A945826FF6B34",
+                                        "customId": ""
+                                    }
+                                },
+                                {
+                                    "className": "org.joget.apps.userview.lib.component.ButtonComponent",
+                                    "properties": {
+                                        "attr-data-events-listening": [],
+                                        "style-font-weight": "500",
+                                        "css-display-type": "btn btn-light",
+                                        "permission_rules": {
+                                            "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                                            "58F9FBEA76264BE037991759BC1645A2": {}
+                                        },
+                                        "style-color": "#7E8299",
+                                        "style-margin-right": "15px",
+                                        "attr-onclick": "appImport();return false;",
+                                        "textContent": "#i18n.Import App#",
+                                        "attr-data-events-triggering": [],
+                                        "attr-href": "#",
+                                        "id": "10862931081E4DF47D44CCDFC696CAD6",
+                                        "customId": ""
+                                    }
+                                },
+                                {
+                                    "className": "org.joget.apps.userview.lib.component.ButtonComponent",
+                                    "properties": {
+                                        "attr-data-events-listening": [],
+                                        "style-font-weight": "500",
+                                        "css-display-type": "btn btn-light",
+                                        "permission_rules": {
+                                            "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                                            "58F9FBEA76264BE037991759BC1645A2": {}
+                                        },
+                                        "style-color": "#7E8299",
+                                        "attr-onclick": "AdminBar.showQuickOverlay(\"#request.contextPath#/web/desktop/marketplace/app?url=\" + encodeURIComponent(\"#platform.marketplaceUrl#\"));return false",
+                                        "textContent": "#i18n.Download from Marketplace#",
+                                        "attr-data-events-triggering": [],
+                                        "attr-href": "#",
+                                        "id": "07863BFB349747ED1A6E45812F7C5F97",
+                                        "customId": ""
+                                    }
+                                }
+                            ],
+                            "className": "org.joget.apps.userview.lib.component.ContainerComponent",
+                            "properties": {
+                                "attr-data-events-listening": [],
+                                "style-text-align": "center",
+                                "hidden": "true",
+                                "style-margin-bottom": "10px",
+                                "permission_rules": {
+                                    "F6E97C06864E4F62843B259A8C9AB1AD": {"hidden": "true"},
+                                    "58F9FBEA76264BE037991759BC1645A2": {"hidden": ""}
+                                },
+                                "attr-data-events-triggering": [],
+                                "id": "96141190357145C9478235142772AEC5",
+                                "customId": ""
+                            }
+                        },
+                        {
+                            "className": "org.joget.apps.userview.lib.component.ScriptComponent",
+                            "properties": {
+                                "attr-data-events-listening": [],
+                                "permission_rules": {
+                                    "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                                    "58F9FBEA76264BE037991759BC1645A2": {}
+                                },
+                                "attr-data-events-triggering": [],
+                                "id": "66465E19B19A4481B8BD32BD9BBC0D83",
+                                "customId": "",
+                                "script": "$(function(){\n    window[\"ajaxContentPlaceholder\"][\"#request.contextPath#/web/userview/my_project/v/_/home\"] = \"dashboard\";\n    \n    var updateClock = function(clock, day){\n        var date = new Date();\n        var ampm = date.getHours() < 12 ? 'AM' : 'PM';\n        var hours = date.getHours() == 0\n                  ? 12\n                  : date.getHours() > 12\n                    ? date.getHours() - 12\n                    : date.getHours();\n        var minutes = date.getMinutes() < 10 \n                    ? '0' + date.getMinutes() \n                    : date.getMinutes();\n        var style = $(clock).find(\"style\"); \n        var dstyle = $(day).find(\"style\"); \n        $(clock).text(hours + \":\" + minutes + \" \" + ampm);\n        $(day).text(date.toLocaleDateString(\"en-US\", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));\n        $(clock).append(style);\n        $(day).append(dstyle);\n    };\n    \n    var clock = $(\"#clock\");\n    var day = $(\"#date\")\n    if (clock.length > 0) {\n        updateClock(clock, day);\n        window.setInterval(function() {\n            updateClock(clock, day);\n        }, 10000);\n    }\n    \n    $(\".inbox-notification\").off(\"inbox_notification_updated\");\n    $(\".inbox-notification\").on(\"inbox_notification_updated\", function(){\n        var style = $(\"#assignment_msg\").find(\"style\");        \n        $(\"#assignment_msg\").html('<h3 style=\"color:#fff;\">Hello #currentUser.firstName#, <\/h3><a style=\"color:#fff;opacity: 0.75 !important;\" href=\"#request.baseURL#/web/userview/my_project/home/_/_ja_inbox\"><h5>' + $(\".inbox-notification .dropdown-menu-title span\").text() + '<h5><\/a>');\n        $(\"#assignment_msg\").append(style);\n    });\n    \n    $(\".inbox-notification\").trigger(\"inbox_notification_updated\");\n});"
+                            }
+                        }
+                    ],
+                    "className": "org.joget.apps.userview.lib.component.ContainerComponent",
+                    "properties": {
+                        "permission_rules": {
+                            "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                            "58F9FBEA76264BE037991759BC1645A2": {}
+                        },
+                        "attr-data-events-triggering": [],
+                        "id": "970F3C4619204E5D5F9253C3A2B9D8A3",
+                        "customId": "inbox_container"
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.component.HeadingComponent",
+                    "properties": {
+                        "attr-data-events-listening": [],
+                        "style-top": "15px",
+                        "style-position": "absolute",
+                        "style-color": "#FFFFFF",
+                        "style-left": "30px",
+                        "textContent": "<i class=\"zmdi zmdi-apps\"><\/i> App Center",
+                        "id": "41B14E1F2C034F11E6F29E4A157C3FEC",
+                        "tagName": "h1",
+                        "customId": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.userview.lib.component.HeadingComponent",
+                    "properties": {
+                        "attr-data-events-listening": [],
+                        "style-top": "15px",
+                        "style-right": "15px",
+                        "style-position": "absolute",
+                        "style-text-align": "center",
+                        "permission_rules": {
+                            "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                            "58F9FBEA76264BE037991759BC1645A2": {}
+                        },
+                        "style-color": "#FFFFFF",
+                        "style-font-size": "20px",
+                        "textContent": " ",
+                        "id": "681B2A6A3E604CDA411A34255B7BD9E3",
+                        "tagName": "h6",
+                        "customId": "date"
+                    }
+                },
+                {
+                    "permission_rules": {
+                        "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                        "58F9FBEA76264BE037991759BC1645A2": {}
+                    },
+                    "className": "menu-component"
+                }
+            ],
+            "className": "org.joget.apps.userview.lib.component.ColumnComponent",
+            "properties": {
+                "style-custom": "padding:20px;",
+                "style-flex": "0 0 100%",
+                "style-background-image": "#request.contextPath#/images/appCenterBanner.png",
+                "style-max-width": "100%",
+                "style-mobile-padding-top": "80px"
+            }
+        }],
+        "className": "org.joget.apps.userview.lib.component.ColumnsComponent",
+        "properties": {
+            "attr-data-events-listening": [],
+            "col-0-style-custom": "padding:20px;",
+            "col-1-style-tablet-custom": "padding:80px 40px 40px 20px;",
+            "columns": [{
+                "style-mobile-max-width": "",
+                "style-max-width": "100%",
+                "style-tablet-max-width": ""
+            }],
+            "permission_rules": {
+                "F6E97C06864E4F62843B259A8C9AB1AD": {},
+                "58F9FBEA76264BE037991759BC1645A2": {}
+            },
+            "col-1-style-custom": "padding:80px 80px 40px 20px;",
+            "css-mobile-stack-columns": "true",
+            "attr-data-events-triggering": [],
+            "customId": "home_column",
+            "col-0-style-mobile-padding-top": "80px",
+            "gutter": "",
+            "id": "74DC9C5E101D4BB4D955B3B9C5FE48D3",
+            "col-0-style-background-image": "#request.contextPath#/images/appCenterBanner.png",
+            "col-1-style-mobile-custom": "padding: 0px 20px 20px;"
+        }
+    }],
+    "className": "org.joget.apps.userview.model.UserviewPage",
+    "properties": {"id": "up-8C70B71371B942B6D48A7E9B4C1DB8D1"}
+}

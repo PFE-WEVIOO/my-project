@@ -1,0 +1,146 @@
+{
+    "elements": [{
+        "elements": [{
+            "elements": [
+                {
+                    "className": "org.joget.apps.form.lib.TextField",
+                    "properties": {
+                        "requiredSanitize": "",
+                        "maxlength": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "label": "Titre",
+                        "readonly": "",
+                        "size": "",
+                        "workflowVariable": "",
+                        "style": "",
+                        "id": "titre",
+                        "placeholder": "",
+                        "value": "",
+                        "readonlyLabel": "",
+                        "storeNumeric": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.form.lib.TextArea",
+                    "properties": {
+                        "requiredSanitize": "",
+                        "readonly": "",
+                        "validator": {
+                            "className": "org.joget.apps.form.lib.DefaultValidator",
+                            "properties": {
+                                "type": "",
+                                "message": "",
+                                "mandatory": "true"
+                            }
+                        },
+                        "workflowVariable": "",
+                        "label": "Article",
+                        "id": "article",
+                        "placeholder": "",
+                        "rows": "5",
+                        "cols": "20",
+                        "value": "",
+                        "readonlyLabel": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.form.lib.FileUpload",
+                    "properties": {
+                        "resizeMethod": "",
+                        "permissionType": "",
+                        "padding": "",
+                        "maxSizeMsg": "Limite de taille de fichier dépassée",
+                        "resizeWidth": "",
+                        "multiple": "",
+                        "validator": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "maxSize": "",
+                        "label": "Image d'accueil",
+                        "resizeQuality": "0.8",
+                        "removeFile": "",
+                        "readonly": "",
+                        "attachment": "true",
+                        "size": "",
+                        "fileTypeMsg": "type de fichier invalide",
+                        "id": "image",
+                        "resizeHeight": "",
+                        "fileType": ""
+                    }
+                },
+                {
+                    "className": "org.joget.apps.form.lib.FileUpload",
+                    "properties": {
+                        "resizeMethod": "",
+                        "permissionType": "",
+                        "padding": "",
+                        "maxSizeMsg": "Limite de taille de fichier dépassée",
+                        "resizeWidth": "",
+                        "multiple": "true",
+                        "validator": {
+                            "className": "",
+                            "properties": {}
+                        },
+                        "maxSize": "",
+                        "label": "Autres images",
+                        "resizeQuality": "0.8",
+                        "removeFile": "",
+                        "readonly": "",
+                        "attachment": "true",
+                        "size": "",
+                        "fileTypeMsg": "type de fichier invalide",
+                        "id": "autres_images",
+                        "resizeHeight": "",
+                        "fileType": ""
+                    }
+                }
+            ],
+            "className": "org.joget.apps.form.model.Column",
+            "properties": {"width": "100%"}
+        }],
+        "className": "org.joget.apps.form.model.Section",
+        "properties": {
+            "header-style-background-color": "#007BFF",
+            "visibilityControl": "",
+            "permissionReadonly": "",
+            "permission": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Actualité",
+            "reverse": "",
+            "storeBinder": {
+                "className": "",
+                "properties": {}
+            },
+            "visibilityValue": "",
+            "regex": "",
+            "readonly": "",
+            "loadBinder": {
+                "className": "",
+                "properties": {}
+            },
+            "comment": "",
+            "id": "section1",
+            "join": "",
+            "readonlyLabel": ""
+        }
+    }],
+    "className": "org.joget.apps.form.model.Form",
+    "properties": {
+        "loadBinder": {"className": "org.joget.apps.form.lib.WorkflowFormBinder"},
+        "name": "Actualites",
+        "description": "",
+        "id": "actualite",
+        "storeBinder": {"className": "org.joget.apps.form.lib.WorkflowFormBinder"},
+        "tableName": "actualites"
+    }
+}

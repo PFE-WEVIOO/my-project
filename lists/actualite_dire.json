@@ -1,0 +1,48 @@
+{
+    "template": {
+        "className": "org.joget.apps.datalist.lib.AppIconTemplate",
+        "properties": {
+            "splitListByColumn": "",
+            "enableSuperApp": "",
+            "columns_desktop": "col-lg-3",
+            "columns_mobile": "col-12",
+            "columns_tablet": "col-md-6"
+        }
+    },
+    "considerFilterWhenGetTotal": "",
+    "card-style-height": "100px",
+    "responsiveMode": "",
+    "rowActions": [],
+    "columns": [],
+    "cardCollapsible": "",
+    "pageSize": "10",
+    "orderBy": "",
+    "description": "",
+    "showDataWhenFilterSet": "",
+    "disableResponsive": "",
+    "rowAction_card": [],
+    "card-style-min-width": "100px",
+    "cardCollapseByDefault": "",
+    "id": "actualite_dire",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "actualite_dire_ministre",
+            "extraCondition": ""
+        }
+    },
+    "card-style-width": "100px",
+    "order": "",
+    "useSession": "",
+    "draggabletable": "",
+    "card-style-min-height": "300px",
+    "filters": [],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "hidePageSize": "true",
+    "column_image": [],
+    "column_title": [],
+    "name": "Actualite directeurs",
+    "rowActionsMode": "",
+    "showhidecolumns": "",
+    "actions": []
+}

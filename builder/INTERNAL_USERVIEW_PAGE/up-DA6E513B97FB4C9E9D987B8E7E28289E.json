@@ -1,0 +1,23 @@
+{
+    "elements": [
+        {
+            "className": "org.joget.apps.userview.lib.component.HeadingComponent",
+            "properties": {
+                "attr-data-events-listening": [],
+                "style-font-weight": "700",
+                "style-margin-top": "50px",
+                "style-text-align": "center",
+                "style-letter-spacing": "6px",
+                "style-color": "#003074",
+                "textContent": "BIENVENUE DANS VOTRE ESPACE!",
+                "style-text-decoration-style": "solid",
+                "id": "A59B6321B97E452211B4AB378502822D",
+                "tagName": "h4",
+                "customId": ""
+            }
+        },
+        {"className": "menu-component"}
+    ],
+    "className": "org.joget.apps.userview.model.UserviewPage",
+    "properties": {"id": "up-6B394E54F00747BBA2E762DF04902A4D"}
+}

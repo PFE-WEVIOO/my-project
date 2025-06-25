@@ -1,0 +1,276 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "considerFilterWhenGetTotal": "",
+    "useSession": "",
+    "responsiveMode": "",
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-edit\"><\/i> ",
+                "href": "modification_etablissement?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_1",
+            "properties": {
+                "link-style-color": "#00FF00",
+                "rules": [{
+                    "field": "active",
+                    "join": "AND",
+                    "value": "0",
+                    "operator": "="
+                }],
+                "label": "<i class=\"fas fa-check-circle\"><\/i> ",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport org.joget.commons.util.LogUtil;\n\n\n  for (String key : rowKeys) {\n      \nString email = \"\";\n\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\nConnection con = null;\ntry {\n    DataSource ds = (DataSource)AppUtil.getApplicationContext().getBean(\"setupDataSource\");\n    con = ds.getConnection();\n    if(!con.isClosed()) {\n        \n        \n \n \n    \n    String selectSql = \"select c_adresse_electronique_directeur from app_fd_directeurs where id = '\"+key+\"' ;\";\n    stmtInsert = con.prepareStatement(selectSql);\n    rs = stmtInsert.executeQuery();\n    if (rs.next()) {\n        email = rs.getString(1);\n        \n    } \n        \n        \n        \n        \n        \n        \n\n           String update_field = \"UPDATE dir_user SET active = '1' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, email);\n            update_sql.executeUpdate();\n            String update_field = \"UPDATE app_fd_directeurs SET c_active = '1' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n\n        \n        \n    }\n} catch(Exception e) {\n    LogUtil.error(\"assignmentForceComplete \", e, \"Cannnot complete assignment\");\n} finally {\n    try {\n        if(con != null) {\n            con.close();\n        }\n    } catch(SQLException e) {/* ignored */}\n}\n\n\n\n\n\n\n  }\n            \n            \n            ",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_3",
+            "properties": {
+                "link-style-color": "#FF0000",
+                "rules": [{
+                    "field": "active",
+                    "join": "AND",
+                    "value": "1",
+                    "operator": "="
+                }],
+                "label": "<i class=\"fas fa-times-circle\"><\/i> ",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport org.joget.commons.util.LogUtil;\n\n\n  for (String key : rowKeys) {\n      \nString email = \"\";\n\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\nConnection con = null;\ntry {\n    DataSource ds = (DataSource)AppUtil.getApplicationContext().getBean(\"setupDataSource\");\n    con = ds.getConnection();\n    if(!con.isClosed()) {\n        \n        \n \n \n    \n    String selectSql = \"select c_adresse_electronique_directeur from app_fd_directeurs where id = '\"+key+\"' ;\";\n    stmtInsert = con.prepareStatement(selectSql);\n    rs = stmtInsert.executeQuery();\n    if (rs.next()) {\n        email = rs.getString(1);\n        \n    } \n        \n        \n        \n        \n        \n        \n\n           String update_field = \"UPDATE dir_user SET active = '0' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, email);\n            update_sql.executeUpdate();\n            String update_field = \"UPDATE app_fd_directeurs SET c_active = '0' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n\n        \n        \n    }\n} catch(Exception e) {\n    LogUtil.error(\"assignmentForceComplete \", e, \"Cannnot complete assignment\");\n} finally {\n    try {\n        if(con != null) {\n            con.close();\n        }\n    } catch(SQLException e) {/* ignored */}\n}\n\n\n\n\n\n\n  }\n            \n            \n            ",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "etablissement",
+                    "formDefId": "etablissement",
+                    "formatting": ""
+                }
+            },
+            "label": "Nom de l'établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "nom_etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "abreviation_agrement",
+            "id": "column_6",
+            "label": "Numéro d'agrément",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Nom du directeur",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "nom",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Prénom du directeur",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "prenom",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "date_nomination",
+            "id": "column_5",
+            "label": "Date de nomination",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "numero_tel",
+            "id": "column_2",
+            "label": "Numéro de téléphone",
+            "sortable": "false",
+            "datalist_type": "column"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "adresse_electronique_directeur",
+            "id": "column_8",
+            "label": "Adresse électronique",
+            "sortable": "false"
+        }
+    ],
+    "draggabletable": "",
+    "cardCollapsible": "",
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "nom_etablissement",
+            "id": "filter_0",
+            "label": "Établissement",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "etablissement",
+                            "labelColumn": "etablissement",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "id"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "placeholder": "",
+                    "submitOnChange": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7886076-fn_nom_etablissement"
+        },
+        {
+            "hidden": "",
+            "name": "nom",
+            "id": "filter_1",
+            "label": "Nom directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7886076-fn_nom"
+        },
+        {
+            "hidden": "",
+            "name": "prenom",
+            "id": "filter_2",
+            "label": "Prénom directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7886076-fn_prenom"
+        }
+    ],
+    "showDataWhenFilterSet": "",
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "hidePageSize": "",
+    "disableResponsive": "",
+    "cardCollapseByDefault": "",
+    "name": "Directeur",
+    "rowActionsMode": "",
+    "showhidecolumns": "",
+    "id": "etablissement",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "creation_etab",
+            "extraCondition": ""
+        }
+    },
+    "actions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "action_0",
+        "properties": {
+            "visible": "true",
+            "hrefColumn": "",
+            "hrefParam": "",
+            "label": "Ajouter un compte directeur",
+            "href": "ajouter_une_etablissement?embed=true",
+            "confirmation": "",
+            "datalist_type": "action",
+            "target": "popup"
+        }
+    }],
+    "order": ""
+}

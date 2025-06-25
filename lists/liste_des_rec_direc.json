@@ -1,0 +1,165 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "activityId",
+            "hrefParam": "activityId",
+            "rules": [],
+            "label": "<i class=\"far fa-edit\"><\/i> ",
+            "href": "_ja_inbox?_mode=assignment",
+            "confirmation": "",
+            "datalist_type": "row_action",
+            "target": "_top",
+            "header_label": "Examiner"
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Numéro Ticket",
+            "id": "column_0",
+            "label": "Numéro Ticket",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Créé Par",
+            "id": "column_1",
+            "label": "Créé Par",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Type Réclamation",
+            "id": "column_2",
+            "label": "Type Réclamation",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Catégorie Demande",
+            "id": "column_3",
+            "label": "Catégorie Demande",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Catégorie Anomalie",
+            "id": "column_4",
+            "label": "Catégorie Anomalie",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date de reclamation",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_date_reclamation",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_9",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Statut",
+            "id": "column_7",
+            "label": "Statut",
+            "sortable": "false"
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "name": "Statut",
+            "id": "filter_4",
+            "label": "Statut",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-3115801-fn_Statut"
+        },
+        {
+            "name": "Nom directeur",
+            "id": "filter_1",
+            "label": "Nom directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3115801-fn_Nom directeur"
+        },
+        {
+            "name": "Agrement",
+            "id": "filter_0",
+            "label": "Agrement",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3115801-fn_Agrement"
+        },
+        {
+            "name": "Numéro Ticket",
+            "id": "filter_2",
+            "label": "Numéro Ticket",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-6172083-fn_Numéro Ticket"
+        },
+        {
+            "name": "Etablissement directeur",
+            "id": "filter_3",
+            "label": "Etablissement directeur",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-3115801-fn_Etablissement directeur"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Liste de reclamation des directeurs ministre",
+    "id": "liste_des_rec_direc",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "SELECT\r\na.c_date_reclamation,\r\n    a.id,\r\n    a.c_num_ticket AS \"Numéro Ticket\",\r\n    a.createdByName AS \"Créé Par\",\r\n    a.c_type_de_reclamation AS \"Type Réclamation\",\r\n    a.c_categorie_demande AS \"Catégorie Demande\",\r\n    a.c_categorie_danomalie AS \"Catégorie Anomalie\",\r\n    a.dateCreated AS \"Date Création\",\r\n    a.modifiedByName AS \"Modifié Par\",\r\n    a.c_statut AS \"Statut\",\r\n    d.c_abreviation_agrement AS \"Agrement\",\r\n    d.c_nom AS \"Nom directeur\",\r\n    c.c_etablissement AS \"Etablissement directeur\",\r\n    shk.ResourceId,\r\n    shk.ActivityId,\r\n    a.c_activityprocessid\r\nFROM \r\n    app_fd_reclamation a \r\nLEFT JOIN \r\n    app_fd_directeurs d \r\nON \r\n    a.c_mail = d.c_adresse_electronique_directeur\r\nLEFT JOIN \r\n    app_fd_etablissement c \r\nON \r\n    d.c_nom_etablissement = c.id\r\nJOIN \r\n    SHKAssignmentsTable shk \r\nON \r\n    (a.c_activityprocessid = shk.ActivityProcessId AND shk.ResourceId = '#currentUser.username#')\r\nWHERE \r\n    a.c_nature_user = 'Directeur établissement'",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

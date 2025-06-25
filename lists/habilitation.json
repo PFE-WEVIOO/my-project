@@ -1,0 +1,176 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_0",
+        "properties": {
+            "hrefColumn": "id;tab_id",
+            "hrefParam": "formation;etab",
+            "rules": [],
+            "label": "Habilitation",
+            "href": "habilitation?embed=true",
+            "confirmation": "",
+            "link-css-display-type": "btn btn-sm btn-primary",
+            "datalist_type": "row_action",
+            "target": "popup",
+            "header_label": ""
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "etablissement",
+                    "formDefId": "etablissement",
+                    "formatting": ""
+                }
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "discipline",
+                    "formDefId": "discipline",
+                    "formatting": ""
+                }
+            },
+            "label": "Diplôme",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_discipline",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.BeanShellFormatter",
+                "properties": {"script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.form.model.Form;\nimport org.joget.apps.form.service.FormService;\nimport org.joget.apps.form.service.FormUtil;\nimport org.joget.apps.form.model.Element;\nimport org.joget.apps.form.model.*;\nimport org.joget.apps.form.service.*;\nimport java.sql.*;\nimport org.apache.commons.collections.SequencedHashMap;\nimport java.util.*;\nimport org.joget.commons.util.UuidGenerator;\nimport org.joget.workflow.model.service.*;\nimport org.joget.workflow.model.WorkflowProcessResult;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport java.time.LocalDate;\nimport java.time.format.DateTimeFormatter;\nimport java.time.format.DateTimeParseException;\nimport org.joget.apps.app.service.AppService;\nimport java.util.Arrays;\n \nimport org.joget.apps.form.model.FormData;\nimport org.joget.commons.util.UuidGenerator;\nimport java.lang.Thread;\n \nString uuid = UuidGenerator.getInstance().getUuid();\n \n\nDataSource ds = (DataSource) AppUtil.getApplicationContext().getBean(\"setupDataSource\");\nConnection con = null;\nPreparedStatement stmtInsert = null;\nResultSet rs = null;\n \n\nString libelle = \"\";\n\n\n \n \n\n// get \ntry {\ncon = ds.getConnection();\n\n \nif (!con.isClosed()) {\n \n \n    \n    String selectSql = \"select a.c_domaine from app_fd_domaine a join app_fd_formations b on a.c_uuid = b.c_domaine where b.c_domaine = '\"+value+\"' ;\";    \n    \n    \n    \n    stmtInsert = con.prepareStatement(selectSql);\n\n    rs = stmtInsert.executeQuery();\n    if (rs.next()) {\n        libelle = rs.getString(1);\n \n      }   \n \n}\n} catch (SQLException e) {\n    LogUtil.info(\"error update DAO\", e.getMessage());\n} finally {\n    try {\n        if (con != null) {\n            con.close();\n        }\n    } catch (Exception ex) {\n    }\n}\n\nreturn \"<span>\" + libelle + \"<\/span>\";"}
+            },
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_domaine",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "org.joget.apps.datalist.lib.DefaultFormatter",
+                "properties": {
+                    "size": "",
+                    "color": "",
+                    "field": "specialite",
+                    "formDefId": "specialite",
+                    "formatting": ""
+                }
+            },
+            "label": "Spécialité",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_specialite",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Habilitation",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "habilitation",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Habilitation",
+    "id": "habilitation",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "SELECT a.id, a.c_domaine, a.c_specialite, a.c_discipline, \r\n       a.c_formation, b.id AS tab_id, b.c_etablissement,\r\n       (SELECT q.c_habilitaion_check \r\n        FROM app_fd_habilitation q \r\n        WHERE q.id = CONCAT(a.id, ';', b.id)) AS habilitation\r\nFROM app_fd_formations a \r\nLEFT JOIN app_fd_etablissement b \r\nON b.c_formation LIKE CONCAT('%', a.id, '%')\r\nWHERE b.id = '#requestParam.etab#'\r\n",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

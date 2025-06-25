@@ -1,0 +1,372 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [{
+        "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+        "id": "rowAction_3",
+        "properties": {
+            "hrefColumn": "activityId",
+            "hrefParam": "activityId",
+            "rules": [],
+            "label": "Examiner",
+            "href": "_ja_inbox?_mode=assignment",
+            "confirmation": "",
+            "link-css-display-type": "btn btn-sm btn-primary",
+            "datalist_type": "row_action",
+            "target": "_top",
+            "header_label": ""
+        }
+    }],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "ID d'étudiant",
+            "sortable": "false",
+            "filters": [{
+                "hidden": "",
+                "name": "c_specialite",
+                "id": "filter_0",
+                "label": "Spécialité",
+                "type": {
+                    "className": "org.joget.SelectBoxOptionsFilter",
+                    "properties": {
+                        "showCount": "",
+                        "isForeignKey": "true",
+                        "optionsBinder": {
+                            "className": "org.joget.tutorial.JdbcOptionsBinder",
+                            "properties": {
+                                "useAjax": "",
+                                "addEmpty": "",
+                                "jdbcDatasource": "default",
+                                "sql": "select distinct a.c_specialite,b.c_specialite from app_fd_formations a join app_fd_specialite b on a.c_specialite = b.id;\n"
+                            }
+                        },
+                        "defaultValue": "",
+                        "options": [],
+                        "displayFull": "",
+                        "showLabel": "true"
+                    }
+                },
+                "datalist_type": "filter",
+                "filterParamName": "d-6703255-fn_c_specialite"
+            }],
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_id_etudiant",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Nom de l'étudiant",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "Nom etudiant",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Année universitaire",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_annee_universitaire",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Diplôme",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "Cycle",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_7",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Domaine",
+            "id": "column_6",
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Spécialité",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_specialite",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "Niveau",
+            "id": "column_8",
+            "label": "Niveau",
+            "sortable": "false",
+            "datalist_type": "column"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date demande",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "c_date_action",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "Cycle",
+            "id": "filter_3",
+            "label": "Diplôme",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select id,c_discipline from app_fd_discipline"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7813337-fn_Cycle"
+        },
+        {
+            "hidden": "",
+            "name": "Domaine",
+            "id": "filter_1",
+            "label": "Domaine",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select c_uuid,c_domaine from app_fd_domaine"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7813337-fn_Domaine"
+        },
+        {
+            "hidden": "",
+            "name": "Niveau",
+            "id": "filter_4",
+            "label": "Niveau",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "",
+                    "optionsBinder": {
+                        "className": "",
+                        "properties": {}
+                    },
+                    "defaultValue": "",
+                    "options": [
+                        {
+                            "label": "1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "3",
+                            "value": "3"
+                        },
+                        {
+                            "label": "4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "5",
+                            "value": "5"
+                        }
+                    ],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7813337-fn_Niveau"
+        },
+        {
+            "hidden": "true",
+            "name": "Statut",
+            "id": "filter_2",
+            "label": "Statut",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "Liste dattente",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-7813337-fn_Statut"
+        },
+        {
+            "hidden": "",
+            "name": "c_specialite",
+            "id": "filter_0",
+            "label": "Spécialité",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.tutorial.JdbcOptionsBinder",
+                        "properties": {
+                            "useAjax": "",
+                            "addEmpty": "",
+                            "jdbcDatasource": "default",
+                            "sql": "select distinct a.c_specialite,b.c_specialite from app_fd_formations a join app_fd_specialite b on a.c_specialite = b.id;\n"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-6703255-fn_c_specialite"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Liste d'attente des demandes",
+    "id": "liste_dattente",
+    "binder": {
+        "className": "org.melkart.plugin.JdbcDatalistBinder",
+        "properties": {
+            "querySource": "sql",
+            "pagination": "",
+            "debug": "",
+            "sql": "\nselect pf.c_date_action,pf.c_id_etudiant,pf.c_activityprocessid, pf.c_specialite, pf.c_annee_universitaire,pf.id,pf.createdByName as 'Nom etudiant',pf.c_domaine as 'Domaine',pf.dateCreated as 'Date demande',pf.c_statut as 'Statut',pf.c_niveau as 'Niveau',pf.c_cycle as 'Cycle',\npf.c_mail_directeur as 'mail_directeur',\nshk.ResourceId,shk.ActivityId \nfrom app_fd_inscription_ecole pf  join SHKAssignmentsTable shk on (pf.c_activityprocessid=shk.ActivityProcessId and shk.ResourceId='#currentUser.username#' )\n\nwhere (pf.c_statut IS NOT NULL or pf.c_statut != '' )",
+            "primaryKey": "id"
+        }
+    },
+    "actions": [],
+    "order": ""
+}

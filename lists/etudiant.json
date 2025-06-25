@@ -1,0 +1,288 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "<i class=\"far fa-edit\"><\/i> ",
+                "href": "visualisation_etudiant_liste?embed=true",
+                "confirmation": "",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_1",
+            "properties": {
+                "link-style-color": "#00FF00",
+                "rules": [{
+                    "field": "active",
+                    "join": "AND",
+                    "value": "0",
+                    "operator": "="
+                }],
+                "label": "<i class=\"fas fa-check-circle\"><\/i> ",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport org.joget.commons.util.LogUtil;\n\n\n  for (String key : rowKeys) {\n      \n\n\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\nConnection con = null;\ntry {\n    DataSource ds = (DataSource)AppUtil.getApplicationContext().getBean(\"setupDataSource\");\n    con = ds.getConnection();\n    if(!con.isClosed()) {\n\n           String update_field = \"UPDATE dir_user SET active = '1' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n            String update_field = \"UPDATE app_fd_inscription_etud SET c_active = '1' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n\n        \n        \n    }\n} catch(Exception e) {\n    LogUtil.error(\"assignmentForceComplete \", e, \"Cannnot complete assignment\");\n} finally {\n    try {\n        if(con != null) {\n            con.close();\n        }\n    } catch(SQLException e) {/* ignored */}\n}\n\n\n\n\n\n\n  }\n            \n            \n            ",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_2",
+            "properties": {
+                "link-style-color": "#FF0000",
+                "rules": [{
+                    "field": "active",
+                    "join": "AND",
+                    "value": "1",
+                    "operator": "="
+                }],
+                "label": "<i class=\"fas fa-times-circle\"><\/i> ",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport org.joget.commons.util.LogUtil;\n\n\n  for (String key : rowKeys) {\n      \n\n\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\nConnection con = null;\ntry {\n    DataSource ds = (DataSource)AppUtil.getApplicationContext().getBean(\"setupDataSource\");\n    con = ds.getConnection();\n    if(!con.isClosed()) {\n\n           String update_field = \"UPDATE dir_user SET active = '0' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n            String update_field = \"UPDATE app_fd_inscription_etud SET c_active = '0' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n        \n        \n    }\n} catch(Exception e) {\n    LogUtil.error(\"assignmentForceComplete \", e, \"Cannnot complete assignment\");\n} finally {\n    try {\n        if(con != null) {\n            con.close();\n        }\n    } catch(SQLException e) {/* ignored */}\n}\n\n\n\n\n\n\n  }\n            \n            \n            ",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Identifiant",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "id_etudiant",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_6",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "nom",
+            "id": "column_0",
+            "label": "Nom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "prenom",
+            "id": "column_1",
+            "label": "Prénom",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "N° CIN",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "num_id",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_7",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "N° passeport",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "num_passport",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_8",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [
+        {
+            "hidden": "",
+            "name": "id_etudiant",
+            "id": "filter_0",
+            "label": "Identifiant de l'étudiant",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-4007174-fn_id_etudiant"
+        },
+        {
+            "hidden": "",
+            "name": "num_id",
+            "id": "filter_2",
+            "label": "N° CIN",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-4007174-fn_num_id"
+        },
+        {
+            "hidden": "",
+            "name": "num_passport",
+            "id": "filter_3",
+            "label": "N° passeport",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {
+                    "defaultValue": "",
+                    "filterSelection": "",
+                    "searchFields": ""
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-4007174-fn_num_passport"
+        },
+        {
+            "name": "nom",
+            "id": "filter_4",
+            "label": "Nom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-4007174-fn_nom"
+        },
+        {
+            "name": "prenom",
+            "id": "filter_5",
+            "label": "Prénom",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            },
+            "filterParamName": "d-4007174-fn_prenom"
+        },
+        {
+            "hidden": "",
+            "name": "etablissement",
+            "id": "filter_1",
+            "label": "Établissement",
+            "type": {
+                "className": "org.joget.SelectBoxOptionsFilter",
+                "properties": {
+                    "showCount": "",
+                    "isForeignKey": "true",
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "addEmptyOption": "true",
+                            "groupingColumn": "",
+                            "formDefId": "etablissement",
+                            "labelColumn": "etablissement",
+                            "extraCondition": "",
+                            "cacheInterval": "",
+                            "emptyLabel": "",
+                            "idColumn": "id"
+                        }
+                    },
+                    "defaultValue": "",
+                    "options": [],
+                    "displayFull": "",
+                    "placeholder": "",
+                    "submitOnChange": "",
+                    "showLabel": "true"
+                }
+            },
+            "datalist_type": "filter",
+            "filterParamName": "d-4007174-fn_etablissement"
+        }
+    ],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Gestion des Etudiants",
+    "id": "etudiant",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "inscription_etud",
+            "extraCondition": ""
+        }
+    },
+    "actions": [],
+    "order": ""
+}

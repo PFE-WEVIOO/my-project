@@ -1,0 +1,242 @@
+{
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "rowActions": [
+        {
+            "className": "org.joget.apps.datalist.lib.HyperlinkDataListAction",
+            "id": "rowAction_0",
+            "properties": {
+                "hrefColumn": "id",
+                "hrefParam": "id",
+                "rules": [],
+                "label": "Détails",
+                "href": "visualisation_inscription?embed=true",
+                "confirmation": "",
+                "link-css-display-type": "btn btn-sm btn-primary",
+                "datalist_type": "row_action",
+                "target": "popup",
+                "header_label": ""
+            }
+        },
+        {
+            "className": "org.joget.marketplace.DocumentGenerationDatalistAction",
+            "id": "rowAction_1",
+            "properties": {
+                "imageWidth": "",
+                "formDefId": "demande_inscription",
+                "rules": [],
+                "label": "Generation",
+                "datalist_type": "row_action",
+                "imageHeight": "",
+                "header_label": "",
+                "gridIncludeHeader": "",
+                "sql_query": "select a.c_nom,a.c_prenom,a.c_date_de_naissance,a.c_genre,a.c_nationalite,a.c_pays_de_naissance,a.c_num_id,a.c_numero_de_telephone ,a.c_email,a.c_id_etudiant,a.c_type_bac,a.c_nature_bac,a.c_annee_bac,a.c_mention,b.c_etablissement,b.c_specialite,b.c_domaine,b.c_niveau,b.c_cycle from app_fd_inscription_etud a join app_fd_inscription_ecole b on a.id = b.createdBy Where b.id",
+                "gridDirection": "",
+                "templateFile": "MESRS.docx",
+                "link-css-display-type": "btn btn-sm btn-primary",
+                "gridWidth": "",
+                "table": "app_fd_inscription_ecole"
+            }
+        },
+        {
+            "className": "org.joget.BshAction",
+            "id": "rowAction_3",
+            "properties": {
+                "link-style-background-color": "#FF0000",
+                "rules": [{
+                    "field": "steps",
+                    "join": "AND",
+                    "value": "1",
+                    "operator": "="
+                }],
+                "label": "<i class=\"fa fa-trash\" aria-hidden=\"true\"><\/i> ",
+                "link-css-display-type": "btn btn-sm btn-primary",
+                "datalist_type": "row_action",
+                "script": "import java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport javax.sql.DataSource;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.commons.util.LogUtil;\nimport org.joget.apps.app.service.AppUtil;\nimport org.joget.workflow.model.service.WorkflowManager;\nimport org.joget.commons.util.LogUtil;\n\n\n  for (String key : rowKeys) {\n      \n                  LogUtil.info(\"<+++++ value form +++++++++++>\", key);\n\n\n\nWorkflowManager workflowManager = (WorkflowManager) AppUtil.getApplicationContext().getBean(\"workflowManager\");\nConnection con = null;\ntry {\n    DataSource ds = (DataSource)AppUtil.getApplicationContext().getBean(\"setupDataSource\");\n    con = ds.getConnection();\n    if(!con.isClosed()) {\n        String selectSQL=\"SELECT DISTINCT shk.ActivityProcessDefName, shk.ActivityProcessId, shk.ActivityId,e.c_mail_directeur FROM jwdb.SHKAssignmentsTable AS shk JOIN jwdb.app_fd_inscription_ecole AS e ON shk.ActivityProcessId = e.c_activityprocessid where e.id like '\"+key+\"';\";\n        PreparedStatement stmtSelectFolders = con.prepareStatement(selectSQL);\n        ResultSet rs = stmtSelectFolders.executeQuery();\n        while (rs.next()) {\n            String c_activityprocessid = rs.getString(\"ActivityProcessId\");\n            String c_processDefId = rs.getString(\"ActivityProcessDefName\");\n            String c_activityId = rs.getString(\"ActivityId\");\n            String c_mail_directeur = rs.getString(\"c_mail_directeur\");\n            LogUtil.info(\" -------------------->  c_activityprocessid-----------> \",c_activityprocessid);\n            LogUtil.info(\" -------------------->  c_processDefId-----------> \",c_processDefId);\n            LogUtil.info(\" -------------------->  c_activityId-----------> \",c_activityId);\n            LogUtil.info(\" -------------------->  c_mail_directeur-----------> \",c_mail_directeur);\n            workflowManager.activityVariable(c_activityId,\"decision\",\"Annuler\");\n            workflowManager.assignmentForceComplete(c_processDefId, c_activityprocessid, c_activityId,c_mail_directeur);\n        }\n            String update_field = \"UPDATE app_fd_inscription_ecole SET c_steps = '2', c_statut = 'Annulé' WHERE id = ?;\";\n            PreparedStatement update_sql = con.prepareStatement(update_field);\n            update_sql.setString(1, key);\n            update_sql.executeUpdate();\n\n        \n        \n    }\n} catch(Exception e) {\n    LogUtil.error(\"assignmentForceComplete \", e, \"Cannnot complete assignment\");\n} finally {\n    try {\n        if(con != null) {\n            con.close();\n        }\n    } catch(SQLException e) {/* ignored */}\n}\n\n\n\n\n\n\n  }\n            \n            \n            ",
+                "confirmationMessage": "",
+                "header_label": ""
+            }
+        }
+    ],
+    "columns": [
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Établissement",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "etablissement",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_0",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Cycle",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "cycle",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_3",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Domaine",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "domaine",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_1",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "name": "specialite",
+            "id": "column_8",
+            "label": "Specialité",
+            "sortable": "false"
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Niveau",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "niveau",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_4",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Date de création",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "dateCreated",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_2",
+            "alignment": ""
+        },
+        {
+            "filterable": true,
+            "hidden": "false",
+            "renderHtml": "",
+            "format": {
+                "className": "",
+                "properties": {}
+            },
+            "label": "Statut",
+            "sortable": "false",
+            "datalist_type": "column",
+            "exclude_export": "",
+            "name": "statut",
+            "width": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "style": "",
+            "id": "column_5",
+            "alignment": ""
+        }
+    ],
+    "pageSize": "0",
+    "orderBy": "",
+    "description": "",
+    "filters": [{
+        "hidden": "true",
+        "name": "createdBy",
+        "id": "filter_0",
+        "label": "Créé Par",
+        "type": {
+            "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+            "properties": {
+                "defaultValue": "#currentUser.username#",
+                "filterSelection": "",
+                "searchFields": ""
+            }
+        },
+        "datalist_type": "filter",
+        "filterParamName": "d-1762014-fn_createdBy"
+    }],
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "name": "Historique des demandes",
+    "id": "historique_demandes",
+    "binder": {
+        "className": "org.joget.apps.datalist.lib.FormRowDataListBinder",
+        "properties": {
+            "formDefId": "demande_inscription",
+            "extraCondition": "c_statut is not 'En cours'"
+        }
+    },
+    "actions": [],
+    "order": ""
+}
